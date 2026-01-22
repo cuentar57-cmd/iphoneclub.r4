@@ -6,43 +6,64 @@
 <title>iPhone Store Río Ceballos</title>
 
 <style>
+/* ===== PALETA ===== */
+:root{
+  --blanco:#ffffff;
+  --gris-fondo:#f2f2f7;
+  --gris-card:#ffffff;
+  --gris-texto:#1c1c1e;
+  --gris-sec:#8e8e93;
+  --azul:#007aff;
+}
+
+/* ===== BASE ===== */
+*{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#000;
-  color:#fff;
+  background:var(--gris-fondo);
+  color:var(--gris-texto);
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
+  background:var(--blanco);
   text-align:center;
-  padding:30px 15px;
+  padding:28px 15px 22px;
+  border-bottom:1px solid #e5e5ea;
 }
+
 .logo{
   font-size:28px;
-  font-weight:bold;
+  font-weight:600;
 }
+
 .ciudad{
-  opacity:.7;
+  margin-top:4px;
+  color:var(--gris-sec);
 }
+
 .dolar{
   display:inline-block;
-  margin-top:15px;
-  padding:10px 18px;
-  border:2px solid #00ff6a;
-  border-radius:30px;
-  color:#00ff6a;
-  font-weight:bold;
+  margin-top:14px;
+  padding:8px 18px;
+  background:var(--azul);
+  color:white;
+  border-radius:22px;
+  font-weight:600;
+  font-size:14px;
 }
 
-/* TITULO */
+/* ===== TITULO ===== */
 h2{
   text-align:center;
-  margin:30px 0 10px;
-  letter-spacing:2px;
+  margin:28px 0 10px;
+  font-size:18px;
+  letter-spacing:1px;
 }
 
-/* PRODUCTOS */
+/* ===== CATALOGO ===== */
 .catalogo{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -50,74 +71,60 @@ h2{
   padding:20px;
 }
 
+/* ===== CARD ===== */
 .card{
-  background:#111;
+  background:var(--gris-card);
   border-radius:20px;
-  padding:20px;
-  box-shadow:0 0 20px rgba(255,255,255,.05);
+  padding:22px;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
 }
 
 .card h3{
   margin:0;
+  font-size:18px;
+  font-weight:600;
 }
 
-.usado{
-  background:#333;
-  padding:5px 10px;
+/* ===== TAG ===== */
+.tag{
+  background:#f2f2f7;
+  color:var(--gris-sec);
+  padding:4px 10px;
   border-radius:20px;
   font-size:12px;
-  margin-left:10px;
+  margin-left:6px;
 }
 
-/* BATERIA */
-.bateria{
-  margin:15px 0;
-  display:inline-block;
-  padding:6px 12px;
-  border:2px solid #00ff6a;
-  border-radius:20px;
-  color:#00ff6a;
-  font-weight:bold;
+/* ===== INFO ===== */
+.info{
+  margin:14px 0;
+  font-size:15px;
 }
 
-/* COLORES */
-.colores{
-  display:flex;
-  gap:10px;
-  margin:10px 0;
-}
-.color{
-  width:22px;
-  height:22px;
-  border-radius:50%;
-  border:2px solid #fff;
-}
-.blanco{background:#fff;}
-.azul{background:#1e90ff;}
-.gris{background:#777;}
-
-/* PRECIO */
+/* ===== PRECIO ===== */
 .precio{
   font-size:26px;
-  margin:10px 0 0;
-}
-.usd{
-  color:#00ff6a;
-  font-weight:bold;
+  font-weight:600;
 }
 
-/* BOTON */
+.usd{
+  margin-top:2px;
+  color:var(--azul);
+  font-weight:600;
+}
+
+/* ===== BOTON ===== */
 .btn{
-  margin-top:15px;
+  margin-top:18px;
   display:block;
   width:100%;
-  text-align:center;
   padding:14px;
-  background:#fff;
-  color:#000;
-  border-radius:30px;
-  font-weight:bold;
+  text-align:center;
+  background:var(--azul);
+  color:white;
+  border-radius:26px;
   text-decoration:none;
+  font-weight:600;
 }
 </style>
 </head>
@@ -127,46 +134,26 @@ h2{
 <header>
   <div class="logo"> iPhone Store</div>
   <div class="ciudad">Río Ceballos</div>
-  <div class="dolar">💵 Dólar hoy: $1.520</div>
+  <div class="dolar">Dólar hoy: $1.520</div>
 </header>
 
 <h2>STOCK DISPONIBLE</h2>
 
 <section class="catalogo">
 
-  <!-- PRODUCTO -->
   <div class="card">
-    <h3>iPhone 11 128GB <span class="usado">Usado</span></h3>
-    <div class="bateria">🔋 100%</div>
-
-    <div>Colores disponibles:</div>
-    <div class="colores">
-      <div class="color blanco"></div>
-      <div class="color azul"></div>
-      <div class="color gris"></div>
-    </div>
-
+    <h3>iPhone 11 128GB <span class="tag">Usado</span></h3>
+    <div class="info">🔋 Batería 100%</div>
     <div class="precio">$380.000</div>
     <div class="usd">USD 250</div>
-
     <a class="btn" href="https://wa.me/549XXXXXXXXXX">Consultar</a>
   </div>
 
-  <!-- OTRO PRODUCTO -->
   <div class="card">
-    <h3>iPhone 13 128GB <span class="usado">Usado</span></h3>
-    <div class="bateria">🔋 98%</div>
-
-    <div>Colores disponibles:</div>
-    <div class="colores">
-      <div class="color blanco"></div>
-      <div class="color azul"></div>
-      <div class="color gris"></div>
-    </div>
-
+    <h3>iPhone 13 128GB <span class="tag">Usado</span></h3>
+    <div class="info">🔋 Batería 98%</div>
     <div class="precio">$620.000</div>
     <div class="usd">USD 410</div>
-
     <a class="btn" href="https://wa.me/549XXXXXXXXXX">Consultar</a>
   </div>
 
