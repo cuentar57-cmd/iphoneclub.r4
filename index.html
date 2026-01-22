@@ -29,13 +29,14 @@ body{
 /* HEADER */
 header{
   background:var(--blanco);
-  padding:24px 16px;
+  padding:28px 16px 24px;
   text-align:center;
 }
 
 header img{
-  height:60px;
-  margin-bottom:14px;
+  height:110px; /* LOGO GRANDE */
+  margin-bottom:22px;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
 }
 
 .search{
@@ -103,6 +104,7 @@ header img{
 .card-top{
   display:flex;
   justify-content:space-between;
+  align-items:flex-start;
 }
 
 .card h3{
@@ -116,6 +118,7 @@ header img{
   font-size:15px;
 }
 
+/* PRECIO */
 .precio{
   text-align:right;
 }
@@ -131,7 +134,7 @@ header img{
   color:var(--gris-texto);
 }
 
-/* INFO */
+/* INFO ICONOS */
 .info{
   display:flex;
   gap:12px;
@@ -170,7 +173,7 @@ header img{
 <body>
 
 <header>
-  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png">
+  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png" alt="Logo">
   <div class="search">🔍 Buscar modelo o capacidad</div>
 </header>
 
@@ -179,7 +182,6 @@ header img{
   <p>Equipos verificados • Garantía</p>
 </div>
 
-<!-- FILTROS -->
 <div class="filters">
   <div class="filter active" data-filter="all">Todos</div>
   <div class="filter" data-filter="16">iPhone 16</div>
