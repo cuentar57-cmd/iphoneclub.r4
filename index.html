@@ -7,13 +7,14 @@
 
 <style>
 :root{
-  --fondo:#f4f4f6;
-  --card:#e2e2e6;
-  --texto:#1c1c1e;
-  --subtexto:#6e6e73;
-  --borde:#d1d1d6;
+  --blanco:#ffffff;
+  --fondo:#f5f5f7;
+  --gris-card:#e5e5ea;      /* GRIS MEDIO CLARO */
+  --gris-texto:#6e6e73;
+  --negro:#1c1c1e;
   --azul:#007aff;
   --verde:#34c759;
+  --borde:#d1d1d6;
 }
 
 *{box-sizing:border-box}
@@ -22,43 +23,42 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:var(--fondo);
-  color:var(--texto);
+  color:var(--negro);
 }
 
 /* HEADER */
 header{
-  background:#ffffff;
-  padding:18px 16px 20px;
+  background:var(--blanco);
+  padding:24px 16px 20px;
   text-align:center;
 }
 
 header img{
-  height:70px;
+  height:60px;
   margin-bottom:14px;
 }
 
-/* BUSCADOR */
 .search{
   background:#ededf0;
-  border-radius:20px;
-  padding:14px 16px;
+  border-radius:22px;
+  padding:14px 18px;
   font-size:15px;
-  color:var(--subtexto);
+  color:var(--gris-texto);
 }
 
-/* TITULOS */
+/* TITULO */
 .section{
-  padding:24px 18px 10px;
+  padding:26px 18px 10px;
 }
 
 .section h2{
   margin:0;
-  font-size:26px;
+  font-size:28px;
 }
 
 .section p{
-  margin:6px 0 0;
-  color:var(--subtexto);
+  margin-top:6px;
+  color:var(--gris-texto);
   font-size:15px;
 }
 
@@ -70,47 +70,48 @@ header img{
 }
 
 .filter{
-  padding:10px 18px;
+  padding:10px 20px;
   border-radius:22px;
   border:1px solid var(--borde);
-  background:#fff;
+  background:var(--blanco);
   font-size:14px;
 }
 
 .filter.active{
-  background:linear-gradient(135deg,#ff375f,#ff9f0a);
+  background:linear-gradient(135deg,#ff8a00,#ff3d81);
   color:white;
   border:none;
 }
 
 /* LISTADO */
 .list{
-  padding:10px 16px 110px;
+  padding:10px 16px 120px;
 }
 
-/* CARD */
+/* CARD PRODUCTO */
 .card{
-  background:var(--card);
+  background:var(--gris-card);
   border-radius:26px;
-  padding:18px;
-  margin-bottom:16px;
-  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
 .card-top{
   display:flex;
   justify-content:space-between;
+  align-items:flex-start;
 }
 
 .card h3{
   margin:0;
-  font-size:20px;
+  font-size:22px;
 }
 
-.detalle{
-  font-size:14px;
-  color:var(--subtexto);
+.capacidad{
   margin-top:4px;
+  color:var(--gris-texto);
+  font-size:15px;
 }
 
 /* PRECIO */
@@ -119,55 +120,30 @@ header img{
 }
 
 .precio strong{
-  font-size:22px;
+  font-size:26px;
+  color:var(--azul); /* AZUL COMO ESTILO */
 }
 
 .precio span{
   display:block;
-  font-size:14px;
-  color:var(--subtexto);
+  font-size:15px;
+  color:var(--gris-texto);
 }
 
-/* COLORES */
-.colores{
-  display:flex;
-  gap:8px;
-  margin:14px 0 6px;
-}
-
-.color{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  background:#ffffff;
-  border-radius:14px;
-  padding:6px 10px;
-  font-size:13px;
-}
-
-.dot{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  border:1px solid #ccc;
-}
-
-.azul{background:#007aff}
-.blanco{background:#ffffff}
-.gris{background:#8e8e93}
-
-/* TAGS */
-.tags{
+/* INFO */
+.info{
   display:flex;
   gap:10px;
-  margin-top:10px;
+  margin-top:16px;
+  flex-wrap:wrap;
 }
 
-.tag{
-  background:#ffffff;
-  border-radius:14px;
-  padding:6px 10px;
-  font-size:13px;
+.badge{
+  background:var(--blanco);
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:14px;
+  color:var(--negro);
 }
 
 /* BOTON WHATSAPP */
@@ -184,7 +160,7 @@ header img{
   font-size:18px;
   font-weight:600;
   text-decoration:none;
-  box-shadow:0 12px 30px rgba(52,199,89,.45);
+  box-shadow:0 14px 30px rgba(52,199,89,.45);
 }
 </style>
 </head>
@@ -213,7 +189,7 @@ header img{
     <div class="card-top">
       <div>
         <h3>iPhone 11</h3>
-        <div class="detalle">128GB</div>
+        <div class="capacidad">128GB</div>
       </div>
       <div class="precio">
         <strong>USD 250</strong>
@@ -221,17 +197,10 @@ header img{
       </div>
     </div>
 
-    <!-- COLORES -->
-    <div class="colores">
-      <div class="color"><span class="dot blanco"></span>Blanco</div>
-      <div class="color"><span class="dot azul"></span>Azul</div>
-      <div class="color"><span class="dot gris"></span>Gris</div>
-    </div>
-
-    <div class="tags">
-      <div class="tag">🔋 100%</div>
-      <div class="tag">🛡️ 30 días</div>
-      <div class="tag">✔ Verificado</div>
+    <div class="info">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">🛡 30 días</div>
+      <div class="badge">✔ Verificado</div>
     </div>
   </div>
 
