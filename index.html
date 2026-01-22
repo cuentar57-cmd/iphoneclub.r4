@@ -8,8 +8,7 @@
 <style>
 :root{
   --fondo:#f4f4f6;
-  --card:#e2e2e6;          /* GRIS NEUTRO REAL */
-  --card-blanca:#ffffff;
+  --card:#e2e2e6;
   --texto:#1c1c1e;
   --subtexto:#6e6e73;
   --borde:#d1d1d6;
@@ -76,7 +75,6 @@ header img{
   border:1px solid var(--borde);
   background:#fff;
   font-size:14px;
-  color:var(--texto);
 }
 
 .filter.active{
@@ -87,7 +85,7 @@ header img{
 
 /* LISTADO */
 .list{
-  padding:10px 16px 100px;
+  padding:10px 16px 110px;
 }
 
 /* CARD */
@@ -102,7 +100,6 @@ header img{
 .card-top{
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
 }
 
 .card h3{
@@ -131,11 +128,39 @@ header img{
   color:var(--subtexto);
 }
 
+/* COLORES */
+.colores{
+  display:flex;
+  gap:8px;
+  margin:14px 0 6px;
+}
+
+.color{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:#ffffff;
+  border-radius:14px;
+  padding:6px 10px;
+  font-size:13px;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  border:1px solid #ccc;
+}
+
+.azul{background:#007aff}
+.blanco{background:#ffffff}
+.gris{background:#8e8e93}
+
 /* TAGS */
 .tags{
   display:flex;
   gap:10px;
-  margin-top:14px;
+  margin-top:10px;
 }
 
 .tag{
@@ -143,7 +168,6 @@ header img{
   border-radius:14px;
   padding:6px 10px;
   font-size:13px;
-  color:var(--texto);
 }
 
 /* BOTON WHATSAPP */
@@ -189,7 +213,7 @@ header img{
     <div class="card-top">
       <div>
         <h3>iPhone 11</h3>
-        <div class="detalle">128GB • Blanco • Pantalla nueva</div>
+        <div class="detalle">128GB</div>
       </div>
       <div class="precio">
         <strong>USD 250</strong>
@@ -197,27 +221,15 @@ header img{
       </div>
     </div>
 
+    <!-- COLORES -->
+    <div class="colores">
+      <div class="color"><span class="dot blanco"></span>Blanco</div>
+      <div class="color"><span class="dot azul"></span>Azul</div>
+      <div class="color"><span class="dot gris"></span>Gris</div>
+    </div>
+
     <div class="tags">
       <div class="tag">🔋 100%</div>
-      <div class="tag">🛡️ 30 días</div>
-      <div class="tag">✔ Verificado</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div>
-        <h3>iPhone 13</h3>
-        <div class="detalle">128GB • Medianoche</div>
-      </div>
-      <div class="precio">
-        <strong>USD 410</strong>
-        <span>ARS $620.000</span>
-      </div>
-    </div>
-
-    <div class="tags">
-      <div class="tag">🔋 98%</div>
       <div class="tag">🛡️ 30 días</div>
       <div class="tag">✔ Verificado</div>
     </div>
