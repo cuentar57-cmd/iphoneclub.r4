@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone Club Rio Cuarto</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+  --azul:#0A4D8C;
+  --azul-claro:#1E73BE;
+  --fondo:#0E1116;
+  --card:#151A21;
+  --gris:#E6E6E6;
+  --borde:#232A34;
+  --usd:#00c853;
+}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--fondo);
+  color:var(--gris);
+}
+
+/* HEADER */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:15px;
+  padding:25px;
+  background:linear-gradient(180deg,#0E1116,#0B1320);
+  border-bottom:1px solid var(--borde);
+}
+header img{width:58px}
+.texto-header{font-size:24px;font-weight:700}
+.sub-ciudad{font-size:13px;opacity:.7}
+
+/* DOLAR */
+.dolar-hoy{
+  display:inline-block;
+  margin-bottom:10px;
+  padding:6px 14px;
+  border-radius:20px;
+  background:#0B1320;
+  border:1px solid var(--azul);
+  color:var(--azul-claro);
+  font-weight:bold;
+}
+
+/* MODELOS */
+.stock{text-align:center}
+.modelos{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding:12px;
+  align-items:center;
+}
+.modelo{text-align:center;cursor:pointer}
+.modelo img{
+  width:70px;height:70px;
+  object-fit:contain;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid var(--borde);
+}
+.modelo.activo img{
+  border-color:var(--azul);
+  box-shadow:0 0 18px rgba(30,115,190,.7);
+}
+.modelo span{
+  display:block;
+  font-size:11px;
+  margin-top:6px;
+  font-weight:600;
+}
+.separador{width:2px;height:70px;background:#555;opacity:.4}
+
+.ver-todos{
+  margin:15px;
+  padding:8px 18px;
+  border-radius:20px;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--azul),var(--azul-claro));
+  color:white;
+}
+
+/* GRID */
+section{padding:15px}
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:15px;
+  max-width:600px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  border:1px solid var(--borde);
+  border-radius:18px;
+  padding:15px;
+  transition:.2s;
+}
+.card:hover{
+  transform:translateY(-2px);
+  border-color:var(--azul);
+}
+
+.titulo{font-weight:700;font-size:16px}
+.tag{
+  padding:3px 8px;
+  border-radius:8px;
+  font-size:12px;
+  margin-left:6px;
+}
+.usado-tag{background:#1E242F;color:#bbb}
+.sellado-tag{background:var(--azul);color:white}
+.ps5-tag{background:#0055ff;color:white}
+
+.bateria{
+  margin-top:6px;
+  display:inline-block;
+  background:#0B1320;
+  border:1px solid var(--azul);
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:12px;
+  color:#7fc7ff;
+}
+
+.detalle{
+  font-size:13px;
+  color:#aaa;
+  margin:6px 0;
+}
+
+.precio-ars{
+  font-size:18px;
+  font-weight:700;
+  color:white;
+}
+.precio-usd{
+  color:var(--usd);
+  font-weight:700;
+}
+
+.ver-cuotas{
+  background:#1E242F;
+  border:1px solid var(--borde);
+  color:white;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.boton{
+  display:block;
+  margin-top:10px;
+  padding:10px;
+  background:linear-gradient(135deg,var(--azul),var(--azul-claro));
+  color:white;
+  text-align:center;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.modal-content{
+  background:#0B1320;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  border:1px solid var(--azul);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="https://i.postimg.cc/FzMvJSsw/images-3-removebg-preview.png">
+  <div class="texto-header">
+    iPhone Club<br>
+    <span class="sub-ciudad">Río Cuarto</span>
+  </div>
+</header>
+
+<div class="stock">
+  <div class="dolar-hoy">💵 Dólar hoy: <strong id="valorDolar"></strong></div>
+  <h2>STOCK DISPONIBLE</h2>
+
+  <div class="modelos">
+    <div class="modelo" onclick="verTodos(this)">
+      <img src="https://i.postimg.cc/9MFt2M9F/1_org_zoom.webp">
+      <span>Todos</span>
+    </div>
+  </div>
+</div>
+
+<section>
+<div class="grid">
+
+<!-- EJEMPLO PRODUCTO -->
+<div class="card usado" data-modelo="14" data-usd="390">
+  <div class="titulo">iPhone 14 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 86%</div>
+  <div class="detalle">Color Midnight ⚫</div>
+  <div class="precio-ars"></div>
+  <div class="precio-usd">USD 390</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
+</div>
+
+</div>
+</section>
+
+<div class="modal" id="modal">
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<script>
+const VALOR_DOLAR = 1520;
+document.getElementById("valorDolar").textContent =
+  `$${VALOR_DOLAR.toLocaleString("es-AR")}`;
+
+document.querySelectorAll(".card[data-usd]").forEach(card=>{
+  const ars = card.dataset.usd * VALOR_DOLAR;
+  card.querySelector(".precio-ars").textContent =
+    `$${ars.toLocaleString("es-AR")}`;
+});
+
+function abrirCuotas(btn){
+  const card = btn.closest(".card");
+  const precio = card.dataset.usd * VALOR_DOLAR;
+  const modal = document.getElementById("modal");
+  document.getElementById("modalContent").innerHTML = `
+    <h3>Cuotas</h3>
+    <p>3x $${Math.round(precio*1.25/3).toLocaleString("es-AR")}</p>
+    <p>6x $${Math.round(precio*1.35/6).toLocaleString("es-AR")}</p>
+    <button onclick="cerrar()">Cerrar</button>`;
+  modal.style.display="flex";
+}
+function cerrar(){document.getElementById("modal").style.display="none";}
+</script>
+
+</body>
+</html>
