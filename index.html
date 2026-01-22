@@ -8,9 +8,10 @@
 <style>
 :root{
   --fondo:#f2f2f7;
-  --negro:#000000;
+  --gris-card:#1c1c1e;
+  --gris-sec:#2c2c2e;
   --blanco:#ffffff;
-  --gris:#9a9a9a;
+  --gris-text:#c7c7cc;
   --azul:#007aff;
 }
 
@@ -26,7 +27,7 @@ body{
 header{
   background:var(--blanco);
   text-align:center;
-  padding:28px 15px 22px;
+  padding:30px 15px 22px;
 }
 
 header img{
@@ -37,7 +38,7 @@ header img{
 
 .dolar{
   display:inline-block;
-  padding:10px 22px;
+  padding:10px 24px;
   background:var(--azul);
   color:white;
   border-radius:28px;
@@ -58,16 +59,16 @@ h2{
 .catalogo{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
+  gap:22px;
   padding:20px;
 }
 
-/* ===== CARD NEGRA ===== */
+/* ===== CARD GRIS ===== */
 .card{
-  background:var(--negro);
-  border-radius:24px;
+  background:var(--gris-card);
+  border-radius:26px;
   padding:24px;
-  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
   color:var(--blanco);
 }
 
@@ -75,15 +76,14 @@ h2{
   margin:0;
   font-size:18px;
   font-weight:600;
-  color:var(--blanco);
 }
 
 /* TAG USADO */
 .tag{
-  background:#1c1c1e;
-  color:var(--gris);
+  background:var(--gris-sec);
+  color:var(--gris-text);
   padding:5px 12px;
-  border-radius:20px;
+  border-radius:18px;
   font-size:12px;
   margin-left:6px;
 }
@@ -92,7 +92,7 @@ h2{
 .info{
   margin:16px 0;
   font-size:15px;
-  color:var(--blanco);
+  color:var(--gris-text);
 }
 
 /* PRECIOS */
@@ -110,14 +110,14 @@ h2{
 
 /* BOTÓN */
 .btn{
-  margin-top:20px;
+  margin-top:22px;
   display:block;
   width:100%;
   padding:16px;
   text-align:center;
   background:var(--azul);
   color:white;
-  border-radius:32px;
+  border-radius:34px;
   text-decoration:none;
   font-weight:600;
 }
