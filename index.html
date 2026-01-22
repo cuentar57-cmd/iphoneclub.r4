@@ -7,12 +7,14 @@
 
 <style>
 :root{
-  --fondo:#f5f5f7;
-  --gris-card:#f7f7f9;   /* GRIS ULTRA CLARO */
-  --gris-sec:#e5e5ea;
+  --fondo:#f4f4f6;
+  --card:#e2e2e6;          /* GRIS NEUTRO REAL */
+  --card-blanca:#ffffff;
   --texto:#1c1c1e;
-  --gris-text:#6e6e73;
+  --subtexto:#6e6e73;
+  --borde:#d1d1d6;
   --azul:#007aff;
+  --verde:#34c759;
 }
 
 *{box-sizing:border-box}
@@ -21,104 +23,144 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:var(--fondo);
+  color:var(--texto);
 }
 
 /* HEADER */
 header{
   background:#ffffff;
+  padding:18px 16px 20px;
   text-align:center;
-  padding:30px 15px 22px;
 }
 
 header img{
-  height:90px;
-  display:block;
-  margin:0 auto 14px;
+  height:70px;
+  margin-bottom:14px;
 }
 
-.dolar{
-  display:inline-block;
-  padding:10px 26px;
-  background:var(--azul);
-  color:white;
-  border-radius:30px;
-  font-weight:600;
+/* BUSCADOR */
+.search{
+  background:#ededf0;
+  border-radius:20px;
+  padding:14px 16px;
+  font-size:15px;
+  color:var(--subtexto);
+}
+
+/* TITULOS */
+.section{
+  padding:24px 18px 10px;
+}
+
+.section h2{
+  margin:0;
+  font-size:26px;
+}
+
+.section p{
+  margin:6px 0 0;
+  color:var(--subtexto);
   font-size:15px;
 }
 
-/* TITULO */
-h2{
-  text-align:center;
-  margin:30px 0 12px;
-  font-size:18px;
-  letter-spacing:1px;
+/* FILTROS */
+.filters{
+  display:flex;
+  gap:10px;
+  padding:12px 18px;
+}
+
+.filter{
+  padding:10px 18px;
+  border-radius:22px;
+  border:1px solid var(--borde);
+  background:#fff;
+  font-size:14px;
   color:var(--texto);
 }
 
-/* CATALOGO */
-.catalogo{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:22px;
-  padding:22px;
+.filter.active{
+  background:linear-gradient(135deg,#ff375f,#ff9f0a);
+  color:white;
+  border:none;
+}
+
+/* LISTADO */
+.list{
+  padding:10px 16px 100px;
 }
 
 /* CARD */
 .card{
-  background:var(--gris-card);
-  border-radius:28px;
-  padding:26px;
-  box-shadow:0 6px 18px rgba(0,0,0,.10);
-  color:var(--texto);
+  background:var(--card);
+  border-radius:26px;
+  padding:18px;
+  margin-bottom:16px;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
 }
 
 .card h3{
   margin:0;
+  font-size:20px;
+}
+
+.detalle{
+  font-size:14px;
+  color:var(--subtexto);
+  margin-top:4px;
+}
+
+/* PRECIO */
+.precio{
+  text-align:right;
+}
+
+.precio strong{
+  font-size:22px;
+}
+
+.precio span{
+  display:block;
+  font-size:14px;
+  color:var(--subtexto);
+}
+
+/* TAGS */
+.tags{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+
+.tag{
+  background:#ffffff;
+  border-radius:14px;
+  padding:6px 10px;
+  font-size:13px;
+  color:var(--texto);
+}
+
+/* BOTON WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  left:16px;
+  right:16px;
+  background:var(--verde);
+  color:white;
+  text-align:center;
+  padding:18px;
+  border-radius:30px;
   font-size:18px;
   font-weight:600;
-}
-
-/* TAG */
-.tag{
-  background:var(--gris-sec);
-  color:var(--gris-text);
-  padding:5px 12px;
-  border-radius:20px;
-  font-size:12px;
-  margin-left:6px;
-}
-
-/* INFO */
-.info{
-  margin:18px 0;
-  font-size:15px;
-  color:var(--gris-text);
-}
-
-/* PRECIOS */
-.precio{
-  font-size:28px;
-  font-weight:600;
-}
-
-.usd{
-  margin-top:4px;
-  color:var(--azul);
-  font-weight:600;
-}
-
-/* BOTON */
-.btn{
-  margin-top:24px;
-  display:block;
-  width:100%;
-  padding:16px;
-  text-align:center;
-  background:var(--azul);
-  color:white;
-  border-radius:36px;
   text-decoration:none;
-  font-weight:600;
+  box-shadow:0 12px 30px rgba(52,199,89,.45);
 }
 </style>
 </head>
@@ -127,30 +169,65 @@ h2{
 
 <header>
   <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png" alt="Logo">
-  <div class="dolar">Dólar hoy: $1.520</div>
+  <div class="search">🔍 Buscar modelo o capacidad</div>
 </header>
 
-<h2>STOCK DISPONIBLE</h2>
+<div class="section">
+  <h2>Stock disponible</h2>
+  <p>Equipos verificados • Garantía</p>
+</div>
 
-<section class="catalogo">
+<div class="filters">
+  <div class="filter">Sellados</div>
+  <div class="filter active">Todos</div>
+  <div class="filter">iPhone 11</div>
+</div>
+
+<div class="list">
 
   <div class="card">
-    <h3>iPhone 11 128GB <span class="tag">Usado</span></h3>
-    <div class="info">🔋 Batería 100%</div>
-    <div class="precio">$380.000</div>
-    <div class="usd">USD 250</div>
-    <a class="btn" href="https://wa.me/549XXXXXXXXXX">Consultar</a>
+    <div class="card-top">
+      <div>
+        <h3>iPhone 11</h3>
+        <div class="detalle">128GB • Blanco • Pantalla nueva</div>
+      </div>
+      <div class="precio">
+        <strong>USD 250</strong>
+        <span>ARS $380.000</span>
+      </div>
+    </div>
+
+    <div class="tags">
+      <div class="tag">🔋 100%</div>
+      <div class="tag">🛡️ 30 días</div>
+      <div class="tag">✔ Verificado</div>
+    </div>
   </div>
 
   <div class="card">
-    <h3>iPhone 13 128GB <span class="tag">Usado</span></h3>
-    <div class="info">🔋 Batería 98%</div>
-    <div class="precio">$620.000</div>
-    <div class="usd">USD 410</div>
-    <a class="btn" href="https://wa.me/549XXXXXXXXXX">Consultar</a>
+    <div class="card-top">
+      <div>
+        <h3>iPhone 13</h3>
+        <div class="detalle">128GB • Medianoche</div>
+      </div>
+      <div class="precio">
+        <strong>USD 410</strong>
+        <span>ARS $620.000</span>
+      </div>
+    </div>
+
+    <div class="tags">
+      <div class="tag">🔋 98%</div>
+      <div class="tag">🛡️ 30 días</div>
+      <div class="tag">✔ Verificado</div>
+    </div>
   </div>
 
-</section>
+</div>
+
+<a class="whatsapp" href="https://wa.me/549XXXXXXXXXX">
+  Consultar por WhatsApp
+</a>
 
 </body>
 </html>
