@@ -7,11 +7,10 @@
 
 <style>
 :root{
+  --fondo:#f2f2f7;
+  --negro:#000000;
   --blanco:#ffffff;
-  --gris-fondo:#f2f2f7;
-  --gris-card:#ffffff;
-  --gris-texto:#1c1c1e;
-  --gris-sec:#8e8e93;
+  --gris:#9a9a9a;
   --azul:#007aff;
 }
 
@@ -20,26 +19,22 @@
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:var(--gris-fondo);
-  color:var(--gris-texto);
+  background:var(--fondo);
 }
 
 /* ===== HEADER ===== */
 header{
   background:var(--blanco);
   text-align:center;
-  padding:28px 15px 22px; /* más aire */
+  padding:28px 15px 22px;
 }
 
-/* LOGO */
 header img{
-  height:85px;          /* logo más grande */
-  max-width:90%;
+  height:85px;
   display:block;
-  margin:0 auto 14px;   /* centrado + espacio abajo */
+  margin:0 auto 14px;
 }
 
-/* BOTÓN DÓLAR */
 .dolar{
   display:inline-block;
   padding:10px 22px;
@@ -56,6 +51,7 @@ h2{
   margin:28px 0 10px;
   font-size:18px;
   letter-spacing:1px;
+  color:#1c1c1e;
 }
 
 /* ===== CATALOGO ===== */
@@ -66,24 +62,26 @@ h2{
   padding:20px;
 }
 
-/* ===== CARD ===== */
+/* ===== CARD NEGRA ===== */
 .card{
-  background:var(--gris-card);
+  background:var(--negro);
   border-radius:24px;
   padding:24px;
-  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  color:var(--blanco);
 }
 
 .card h3{
   margin:0;
   font-size:18px;
   font-weight:600;
+  color:var(--blanco);
 }
 
 /* TAG USADO */
 .tag{
-  background:#f2f2f7;
-  color:var(--gris-sec);
+  background:#1c1c1e;
+  color:var(--gris);
   padding:5px 12px;
   border-radius:20px;
   font-size:12px;
@@ -94,12 +92,14 @@ h2{
 .info{
   margin:16px 0;
   font-size:15px;
+  color:var(--blanco);
 }
 
 /* PRECIOS */
 .precio{
   font-size:28px;
   font-weight:600;
+  color:var(--blanco);
 }
 
 .usd{
@@ -108,7 +108,7 @@ h2{
   font-weight:600;
 }
 
-/* BOTÓN CONSULTAR */
+/* BOTÓN */
 .btn{
   margin-top:20px;
   display:block;
