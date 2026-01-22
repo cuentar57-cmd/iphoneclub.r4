@@ -62,7 +62,7 @@ header img{
   font-size:15px;
 }
 
-/* FILTROS MODELOS */
+/* FILTROS */
 .filters{
   display:flex;
   gap:10px;
@@ -71,13 +71,13 @@ header img{
 }
 
 .filter{
-  white-space:nowrap;
   padding:10px 18px;
   border-radius:22px;
   border:1px solid var(--borde);
   background:var(--blanco);
   font-size:14px;
-  color:var(--negro);
+  cursor:pointer;
+  white-space:nowrap;
 }
 
 .filter.active{
@@ -103,7 +103,6 @@ header img{
 .card-top{
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
 }
 
 .card h3{
@@ -117,7 +116,6 @@ header img{
   font-size:15px;
 }
 
-/* PRECIO */
 .precio{
   text-align:right;
 }
@@ -133,7 +131,7 @@ header img{
   color:var(--gris-texto);
 }
 
-/* INFO ICONOS */
+/* INFO */
 .info{
   display:flex;
   gap:12px;
@@ -148,10 +146,9 @@ header img{
   padding:6px 10px;
   border-radius:14px;
   font-size:13px;
-  color:var(--negro);
 }
 
-/* BOTON WHATSAPP */
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -173,7 +170,7 @@ header img{
 <body>
 
 <header>
-  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png" alt="Logo">
+  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png">
   <div class="search">🔍 Buscar modelo o capacidad</div>
 </header>
 
@@ -182,18 +179,17 @@ header img{
   <p>Equipos verificados • Garantía</p>
 </div>
 
+<!-- FILTROS -->
 <div class="filters">
-  <div class="filter">Sellados</div>
-  <div class="filter active">Todos</div>
-  <div class="filter">iPhone 16</div>
-  <div class="filter">16 Pro</div>
-  <div class="filter">16 Pro Max</div>
+  <div class="filter active" data-filter="all">Todos</div>
+  <div class="filter" data-filter="16">iPhone 16</div>
+  <div class="filter" data-filter="16-pro">16 Pro</div>
+  <div class="filter" data-filter="16-pro-max">16 Pro Max</div>
 </div>
 
 <div class="list">
 
-  <!-- iPhone 16 -->
-  <div class="card">
+  <div class="card" data-model="16">
     <div class="card-top">
       <div>
         <h3>iPhone 16</h3>
@@ -204,7 +200,6 @@ header img{
         <span>ARS $1.245.750</span>
       </div>
     </div>
-
     <div class="info">
       <span>🔋 100%</span>
       <span>🛡 30 días</span>
@@ -212,8 +207,7 @@ header img{
     </div>
   </div>
 
-  <!-- iPhone 16 Pro -->
-  <div class="card">
+  <div class="card" data-model="16-pro">
     <div class="card-top">
       <div>
         <h3>iPhone 16 Pro</h3>
@@ -224,7 +218,6 @@ header img{
         <span>ARS $1.208.000</span>
       </div>
     </div>
-
     <div class="info">
       <span>🔋 90%</span>
       <span>🛡 30 días</span>
@@ -232,8 +225,7 @@ header img{
     </div>
   </div>
 
-  <!-- iPhone 16 Pro Max -->
-  <div class="card">
+  <div class="card" data-model="16-pro-max">
     <div class="card-top">
       <div>
         <h3>iPhone 16 Pro Max</h3>
@@ -244,7 +236,6 @@ header img{
         <span>ARS $1.494.000</span>
       </div>
     </div>
-
     <div class="info">
       <span>🛡 30 días</span>
       <span>✔ Verificado</span>
@@ -256,6 +247,28 @@ header img{
 <a class="whatsapp" href="https://wa.me/549XXXXXXXXXX">
   Consultar por WhatsApp
 </a>
+
+<script>
+const filters = document.querySelectorAll('.filter');
+const cards = document.querySelectorAll('.card');
+
+filters.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filters.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filtro = btn.dataset.filter;
+
+    cards.forEach(card => {
+      if (filtro === 'all' || card.dataset.model === filtro) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
 
 </body>
 </html>
