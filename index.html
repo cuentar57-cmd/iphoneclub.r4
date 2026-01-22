@@ -7,11 +7,11 @@
 
 <style>
 :root{
-  --fondo:#f2f2f7;
-  --gris-card:#1c1c1e;
-  --gris-sec:#2c2c2e;
-  --blanco:#ffffff;
-  --gris-text:#c7c7cc;
+  --fondo:#f5f5f7;
+  --gris-card:#f7f7f9;   /* GRIS ULTRA CLARO */
+  --gris-sec:#e5e5ea;
+  --texto:#1c1c1e;
+  --gris-text:#6e6e73;
   --azul:#007aff;
 }
 
@@ -23,53 +23,53 @@ body{
   background:var(--fondo);
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
-  background:var(--blanco);
+  background:#ffffff;
   text-align:center;
   padding:30px 15px 22px;
 }
 
 header img{
-  height:85px;
+  height:90px;
   display:block;
   margin:0 auto 14px;
 }
 
 .dolar{
   display:inline-block;
-  padding:10px 24px;
+  padding:10px 26px;
   background:var(--azul);
   color:white;
-  border-radius:28px;
+  border-radius:30px;
   font-weight:600;
   font-size:15px;
 }
 
-/* ===== TITULO ===== */
+/* TITULO */
 h2{
   text-align:center;
-  margin:28px 0 10px;
+  margin:30px 0 12px;
   font-size:18px;
   letter-spacing:1px;
-  color:#1c1c1e;
+  color:var(--texto);
 }
 
-/* ===== CATALOGO ===== */
+/* CATALOGO */
 .catalogo{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:22px;
-  padding:20px;
+  padding:22px;
 }
 
-/* ===== CARD GRIS ===== */
+/* CARD */
 .card{
   background:var(--gris-card);
-  border-radius:26px;
-  padding:24px;
-  box-shadow:0 10px 28px rgba(0,0,0,.35);
-  color:var(--blanco);
+  border-radius:28px;
+  padding:26px;
+  box-shadow:0 6px 18px rgba(0,0,0,.10);
+  color:var(--texto);
 }
 
 .card h3{
@@ -78,19 +78,19 @@ h2{
   font-weight:600;
 }
 
-/* TAG USADO */
+/* TAG */
 .tag{
   background:var(--gris-sec);
   color:var(--gris-text);
   padding:5px 12px;
-  border-radius:18px;
+  border-radius:20px;
   font-size:12px;
   margin-left:6px;
 }
 
 /* INFO */
 .info{
-  margin:16px 0;
+  margin:18px 0;
   font-size:15px;
   color:var(--gris-text);
 }
@@ -99,7 +99,6 @@ h2{
 .precio{
   font-size:28px;
   font-weight:600;
-  color:var(--blanco);
 }
 
 .usd{
@@ -108,16 +107,16 @@ h2{
   font-weight:600;
 }
 
-/* BOTÓN */
+/* BOTON */
 .btn{
-  margin-top:22px;
+  margin-top:24px;
   display:block;
   width:100%;
   padding:16px;
   text-align:center;
   background:var(--azul);
   color:white;
-  border-radius:34px;
+  border-radius:36px;
   text-decoration:none;
   font-weight:600;
 }
