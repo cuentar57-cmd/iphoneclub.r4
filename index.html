@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iPhone Store Río Ceballos</title>
+<title>Catálogo iPhone</title>
 
 <style>
-/* ===== PALETA ===== */
 :root{
   --blanco:#ffffff;
   --gris-fondo:#f2f2f7;
@@ -16,7 +15,6 @@
   --azul:#007aff;
 }
 
-/* ===== BASE ===== */
 *{box-sizing:border-box}
 
 body{
@@ -26,24 +24,20 @@ body{
   color:var(--gris-texto);
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   background:var(--blanco);
   text-align:center;
-  padding:28px 15px 22px;
+  padding:22px 15px 18px;
   border-bottom:1px solid #e5e5ea;
 }
 
-.logo{
-  font-size:28px;
-  font-weight:600;
+header img{
+  height:65px;
+  max-width:90%;
 }
 
-.ciudad{
-  margin-top:4px;
-  color:var(--gris-sec);
-}
-
+/* BOTÓN DÓLAR */
 .dolar{
   display:inline-block;
   margin-top:14px;
@@ -55,7 +49,7 @@ header{
   font-size:14px;
 }
 
-/* ===== TITULO ===== */
+/* TITULO */
 h2{
   text-align:center;
   margin:28px 0 10px;
@@ -63,7 +57,7 @@ h2{
   letter-spacing:1px;
 }
 
-/* ===== CATALOGO ===== */
+/* CATÁLOGO */
 .catalogo{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -71,7 +65,7 @@ h2{
   padding:20px;
 }
 
-/* ===== CARD ===== */
+/* CARD */
 .card{
   background:var(--gris-card);
   border-radius:20px;
@@ -85,7 +79,6 @@ h2{
   font-weight:600;
 }
 
-/* ===== TAG ===== */
 .tag{
   background:#f2f2f7;
   color:var(--gris-sec);
@@ -95,13 +88,11 @@ h2{
   margin-left:6px;
 }
 
-/* ===== INFO ===== */
 .info{
   margin:14px 0;
   font-size:15px;
 }
 
-/* ===== PRECIO ===== */
 .precio{
   font-size:26px;
   font-weight:600;
@@ -113,7 +104,6 @@ h2{
   font-weight:600;
 }
 
-/* ===== BOTON ===== */
 .btn{
   margin-top:18px;
   display:block;
@@ -132,8 +122,8 @@ h2{
 <body>
 
 <header>
-  <div class="logo"> iPhone Store</div>
-  <div class="ciudad">Río Ceballos</div>
+  <!-- LOGO -->
+  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png" alt="Logo">
   <div class="dolar">Dólar hoy: $1.520</div>
 </header>
 
