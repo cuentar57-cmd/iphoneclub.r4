@@ -39,19 +39,6 @@ header img{width:58px}
 .texto-header{font-size:24px;font-weight:700}
 .sub-ciudad{font-size:13px;opacity:.7}
 
-/* DOLAR */
-.stock{text-align:center}
-.dolar-hoy{
-  display:inline-block;
-  margin-bottom:10px;
-  padding:6px 14px;
-  border-radius:20px;
-  background:#0B1320;
-  border:1px solid var(--azul);
-  color:var(--azul-claro);
-  font-weight:bold;
-}
-
 /* GRID */
 section{padding:15px}
 .grid{
@@ -70,15 +57,10 @@ section{padding:15px}
   border-radius:18px;
   padding:15px;
   overflow:hidden;
-  transition:.2s;
 }
 
-.card:hover{
-  transform:translateY(-2px);
-}
-
-/* ===== BORDE BRILLANTE SVG ===== */
-.card .borde-animado{
+/* ===== BORDE RECTANGULAR REAL ===== */
+.borde-animado{
   position:absolute;
   inset:0;
   width:100%;
@@ -87,36 +69,39 @@ section{padding:15px}
   z-index:0;
 }
 
-.card .borde-animado rect{
+.borde-animado rect{
   fill:none;
   stroke:#1E73BE;
   stroke-width:2;
-  stroke-dasharray:300;
-  stroke-dashoffset:300;
-  animation:recorrerBorde 18s linear infinite;
+  pathLength:100;
+
+  /* UNA LÍNEA CORTA */
+  stroke-dasharray:18 82;
+  stroke-dashoffset:100;
+
+  animation:recorrer 20s linear infinite;
   filter:drop-shadow(0 0 6px #7fc7ff);
 }
 
-/* contenido arriba */
+/* contenido */
 .card > *{
   position:relative;
   z-index:1;
 }
 
-@keyframes recorrerBorde{
+@keyframes recorrer{
   to{ stroke-dashoffset:0; }
 }
 
 /* INFO */
 .titulo{font-weight:700;font-size:16px}
-.tag{
+.usado-tag{
+  background:#1E242F;
+  color:#bbb;
   padding:3px 8px;
   border-radius:8px;
   font-size:12px;
-  margin-left:6px;
 }
-.usado-tag{background:#1E242F;color:#bbb}
-
 .bateria{
   margin-top:6px;
   display:inline-block;
@@ -127,32 +112,9 @@ section{padding:15px}
   font-size:12px;
   color:#7fc7ff;
 }
-
-.detalle{
-  font-size:13px;
-  color:#aaa;
-  margin:6px 0;
-}
-
-.precio-ars{
-  font-size:18px;
-  font-weight:700;
-  color:white;
-}
-.precio-usd{
-  color:var(--usd);
-  font-weight:700;
-}
-
-.ver-cuotas{
-  background:#1E242F;
-  border:1px solid var(--borde);
-  color:white;
-  padding:6px 10px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
+.detalle{font-size:13px;color:#aaa;margin:6px 0}
+.precio-ars{font-size:18px;font-weight:700;color:white}
+.precio-usd{color:var(--usd);font-weight:700}
 .boton{
   display:block;
   margin-top:10px;
@@ -163,24 +125,6 @@ section{padding:15px}
   border-radius:12px;
   text-decoration:none;
   font-weight:bold;
-}
-
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-}
-.modal-content{
-  background:#0B1320;
-  padding:20px;
-  border-radius:15px;
-  text-align:center;
-  border:1px solid var(--azul);
 }
 </style>
 </head>
@@ -195,63 +139,28 @@ section{padding:15px}
   </div>
 </header>
 
-<div class="stock">
-  <div class="dolar-hoy">💵 Dólar hoy: <strong id="valorDolar"></strong></div>
-  <h2>STOCK DISPONIBLE</h2>
-</div>
-
 <section>
 <div class="grid">
 
-<!-- PRODUCTO -->
-<div class="card usado" data-usd="390">
+<div class="card" data-usd="390">
 
-  <!-- SVG BORDE -->
+  <!-- BORDE SVG -->
   <svg class="borde-animado" viewBox="0 0 100 100" preserveAspectRatio="none">
     <rect x="1" y="1" width="98" height="98" rx="18" ry="18"/>
   </svg>
 
-  <div class="titulo">iPhone 14 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="titulo">
+    iPhone 14 128GB <span class="usado-tag">Usado</span>
+  </div>
   <div class="bateria">🔋 86%</div>
   <div class="detalle">Color Midnight ⚫</div>
-  <div class="precio-ars"></div>
+  <div class="precio-ars">$592.800</div>
   <div class="precio-usd">USD 390</div>
-  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
   <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
 </div>
 
 </div>
 </section>
-
-<div class="modal" id="modal">
-  <div class="modal-content" id="modalContent"></div>
-</div>
-
-<script>
-const VALOR_DOLAR = 1520;
-document.getElementById("valorDolar").textContent =
-  `$${VALOR_DOLAR.toLocaleString("es-AR")}`;
-
-document.querySelectorAll(".card[data-usd]").forEach(card=>{
-  const ars = card.dataset.usd * VALOR_DOLAR;
-  card.querySelector(".precio-ars").textContent =
-    `$${ars.toLocaleString("es-AR")}`;
-});
-
-function abrirCuotas(btn){
-  const card = btn.closest(".card");
-  const precio = card.dataset.usd * VALOR_DOLAR;
-  document.getElementById("modalContent").innerHTML = `
-    <h3>Cuotas</h3>
-    <p>3x $${Math.round(precio*1.25/3).toLocaleString("es-AR")}</p>
-    <p>6x $${Math.round(precio*1.35/6).toLocaleString("es-AR")}</p>
-    <button onclick="cerrar()">Cerrar</button>`;
-  document.getElementById("modal").style.display="flex";
-}
-function cerrar(){
-  document.getElementById("modal").style.display="none";
-}
-</script>
 
 </body>
 </html>
