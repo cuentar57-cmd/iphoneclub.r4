@@ -7,14 +7,14 @@
 
 <style>
 :root{
-  --blanco:#ffffff;
   --fondo:#f5f5f7;
-  --gris-card:#e5e5ea;      /* GRIS MEDIO CLARO */
+  --gris-card:#e5e5ea;
   --gris-texto:#6e6e73;
   --negro:#1c1c1e;
   --azul:#007aff;
   --verde:#34c759;
   --borde:#d1d1d6;
+  --blanco:#ffffff;
 }
 
 *{box-sizing:border-box}
@@ -29,7 +29,7 @@ body{
 /* HEADER */
 header{
   background:var(--blanco);
-  padding:24px 16px 20px;
+  padding:24px 16px;
   text-align:center;
 }
 
@@ -62,38 +62,17 @@ header img{
   font-size:15px;
 }
 
-/* FILTROS */
-.filters{
-  display:flex;
-  gap:10px;
-  padding:12px 18px;
-}
-
-.filter{
-  padding:10px 20px;
-  border-radius:22px;
-  border:1px solid var(--borde);
-  background:var(--blanco);
-  font-size:14px;
-}
-
-.filter.active{
-  background:linear-gradient(135deg,#ff8a00,#ff3d81);
-  color:white;
-  border:none;
-}
-
 /* LISTADO */
 .list{
   padding:10px 16px 120px;
 }
 
-/* CARD PRODUCTO */
+/* CARD */
 .card{
   background:var(--gris-card);
   border-radius:26px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:22px;
   box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
@@ -108,8 +87,8 @@ header img{
   font-size:22px;
 }
 
-.capacidad{
-  margin-top:4px;
+.detalle{
+  margin-top:6px;
   color:var(--gris-texto);
   font-size:15px;
 }
@@ -121,7 +100,7 @@ header img{
 
 .precio strong{
   font-size:26px;
-  color:var(--azul); /* AZUL COMO ESTILO */
+  color:var(--azul);
 }
 
 .precio span{
@@ -143,10 +122,9 @@ header img{
   padding:8px 14px;
   border-radius:20px;
   font-size:14px;
-  color:var(--negro);
 }
 
-/* BOTON WHATSAPP */
+/* BOTON */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -177,29 +155,60 @@ header img{
   <p>Equipos verificados • Garantía</p>
 </div>
 
-<div class="filters">
-  <div class="filter">Sellados</div>
-  <div class="filter active">Todos</div>
-  <div class="filter">iPhone 11</div>
-</div>
-
 <div class="list">
 
+  <!-- iPhone 16 -->
   <div class="card">
     <div class="card-top">
       <div>
-        <h3>iPhone 11</h3>
-        <div class="capacidad">128GB</div>
+        <h3>iPhone 16</h3>
+        <div class="detalle">128GB • Negro • Batería 100%</div>
       </div>
       <div class="precio">
-        <strong>USD 250</strong>
-        <span>ARS $380.000</span>
+        <strong>USD 825</strong>
+        <span>ARS $1.245.750</span>
       </div>
     </div>
 
     <div class="info">
       <div class="badge">🔋 100%</div>
-      <div class="badge">🛡 30 días</div>
+      <div class="badge">✔ Verificado</div>
+    </div>
+  </div>
+
+  <!-- iPhone 16 Pro -->
+  <div class="card">
+    <div class="card-top">
+      <div>
+        <h3>iPhone 16 Pro</h3>
+        <div class="detalle">128GB • Blanco Titanium • Batería 90%</div>
+      </div>
+      <div class="precio">
+        <strong>USD 800</strong>
+        <span>ARS $1.208.000</span>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="badge">🔋 90%</div>
+      <div class="badge">✔ Verificado</div>
+    </div>
+  </div>
+
+  <!-- iPhone 16 Pro Max -->
+  <div class="card">
+    <div class="card-top">
+      <div>
+        <h3>iPhone 16 Pro Max</h3>
+        <div class="detalle">Negro Titanium</div>
+      </div>
+      <div class="precio">
+        <strong>USD 990</strong>
+        <span>ARS $1.494.000</span>
+      </div>
+    </div>
+
+    <div class="info">
       <div class="badge">✔ Verificado</div>
     </div>
   </div>
