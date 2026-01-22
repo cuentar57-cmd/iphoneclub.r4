@@ -3,94 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iPhone Club Rio Cuarto</title>
+<title>iPhone Store Río Ceballos</title>
 
 <style>
 body{
   margin:0;
-  background:#0E1116;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#000;
   color:#fff;
 }
 
-.grid{
-  max-width:600px;
-  margin:40px auto;
-  padding:15px;
+/* HEADER */
+header{
+  text-align:center;
+  padding:30px 15px;
+}
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
+.ciudad{
+  opacity:.7;
+}
+.dolar{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 18px;
+  border:2px solid #00ff6a;
+  border-radius:30px;
+  color:#00ff6a;
+  font-weight:bold;
+}
+
+/* TITULO */
+h2{
+  text-align:center;
+  margin:30px 0 10px;
+  letter-spacing:2px;
+}
+
+/* PRODUCTOS */
+.catalogo{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  padding:20px;
 }
 
 .card{
-  position:relative;
-  background:#151A21;
-  border-radius:18px;
+  background:#111;
+  border-radius:20px;
   padding:20px;
-  overflow:hidden;
+  box-shadow:0 0 20px rgba(255,255,255,.05);
 }
 
-/* SVG */
-.borde-svg{
-  position:absolute;
-  inset:0;
+.card h3{
+  margin:0;
+}
+
+.usado{
+  background:#333;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:12px;
+  margin-left:10px;
+}
+
+/* BATERIA */
+.bateria{
+  margin:15px 0;
+  display:inline-block;
+  padding:6px 12px;
+  border:2px solid #00ff6a;
+  border-radius:20px;
+  color:#00ff6a;
+  font-weight:bold;
+}
+
+/* COLORES */
+.colores{
+  display:flex;
+  gap:10px;
+  margin:10px 0;
+}
+.color{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  border:2px solid #fff;
+}
+.blanco{background:#fff;}
+.azul{background:#1e90ff;}
+.gris{background:#777;}
+
+/* PRECIO */
+.precio{
+  font-size:26px;
+  margin:10px 0 0;
+}
+.usd{
+  color:#00ff6a;
+  font-weight:bold;
+}
+
+/* BOTON */
+.btn{
+  margin-top:15px;
+  display:block;
   width:100%;
-  height:100%;
-  pointer-events:none;
+  text-align:center;
+  padding:14px;
+  background:#fff;
+  color:#000;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
 }
-
-.borde-svg rect{
-  fill:none;
-  stroke:#1E73BE;
-  stroke-width:2;
-  filter:drop-shadow(0 0 6px #7fc7ff);
-}
-
-/* contenido arriba */
-.card > *{
-  position:relative;
-  z-index:1;
-}
-
-.titulo{font-weight:700}
-.detalle{opacity:.7;margin-top:6px}
 </style>
 </head>
 
 <body>
 
-<div class="grid">
+<header>
+  <div class="logo"> iPhone Store</div>
+  <div class="ciudad">Río Ceballos</div>
+  <div class="dolar">💵 Dólar hoy: $1.520</div>
+</header>
 
-<div class="card">
+<h2>STOCK DISPONIBLE</h2>
 
-  <svg class="borde-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-    <rect id="borde" x="1" y="1" width="98" height="98" rx="18" ry="18"/>
-  </svg>
+<section class="catalogo">
 
-  <div class="titulo">iPhone 14 128GB</div>
-  <div class="detalle">Usado • 86% batería</div>
+  <!-- PRODUCTO -->
+  <div class="card">
+    <h3>iPhone 11 128GB <span class="usado">Usado</span></h3>
+    <div class="bateria">🔋 100%</div>
 
-</div>
+    <div>Colores disponibles:</div>
+    <div class="colores">
+      <div class="color blanco"></div>
+      <div class="color azul"></div>
+      <div class="color gris"></div>
+    </div>
 
-</div>
+    <div class="precio">$380.000</div>
+    <div class="usd">USD 250</div>
 
-<script>
-const rect = document.getElementById("borde");
+    <a class="btn" href="https://wa.me/549XXXXXXXXXX">Consultar</a>
+  </div>
 
-/* largo real del borde */
-const length = rect.getTotalLength();
+  <!-- OTRO PRODUCTO -->
+  <div class="card">
+    <h3>iPhone 13 128GB <span class="usado">Usado</span></h3>
+    <div class="bateria">🔋 98%</div>
 
-/* UNA sola línea */
-rect.style.strokeDasharray = `${length * 0.18} ${length}`;
-rect.style.strokeDashoffset = length;
+    <div>Colores disponibles:</div>
+    <div class="colores">
+      <div class="color blanco"></div>
+      <div class="color azul"></div>
+      <div class="color gris"></div>
+    </div>
 
-/* animación real */
-rect.animate(
-  [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
-  {
-    duration: 20000, // 20s lento
-    iterations: Infinity,
-    easing: "linear"
-  }
-);
-</script>
+    <div class="precio">$620.000</div>
+    <div class="usd">USD 410</div>
+
+    <a class="btn" href="https://wa.me/549XXXXXXXXXX">Consultar</a>
+  </div>
+
+</section>
 
 </body>
 </html>
