@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo iPhone</title>
+<title>Catálogo</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
@@ -18,70 +17,46 @@ body{
 
 /* HEADER */
 header{
-  padding:30px 16px 16px;
   text-align:center;
+  padding:28px 16px 16px;
 }
 header img{
-  width:150px;
-  margin-bottom:18px;
+  width:170px;
 }
 
-/* BUSCADOR */
-.search{
-  background:#e9e9ec;
-  border-radius:22px;
-  padding:14px 18px;
-  display:flex;
-  gap:10px;
-}
-
-/* MENU DESLIZABLE */
-.tabs{
+/* FILTROS */
+.filters{
   display:flex;
   gap:12px;
   overflow-x:auto;
   padding:16px;
 }
-.tabs a{
+.filter{
   flex-shrink:0;
   padding:10px 18px;
-  border-radius:20px;
-  font-weight:700;
-  font-size:14px;
-  color:#fff;
-  text-decoration:none;
-  background:linear-gradient(135deg,#007aff,#00c6ff);
-  box-shadow:0 6px 18px rgba(0,122,255,.35);
-}
-
-/* TITULOS SECCION */
-.section{
-  padding:10px 16px 4px;
-}
-.section h2{
-  margin:24px 0 12px;
-  padding:12px 20px;
   border-radius:22px;
+  font-size:14px;
+  font-weight:700;
   color:#fff;
-  font-size:18px;
   background:linear-gradient(135deg,#007aff,#00c6ff);
+  border:none;
 }
 
 /* LISTA */
 .list{
-  padding:0 16px 130px;
+  padding:10px 16px 120px;
 }
 
 /* CARD */
 .card{
   background:#000;
-  color:#fff;
   border-radius:26px;
   padding:14px 16px;
   margin-bottom:14px;
   display:flex;
   justify-content:space-between;
   gap:10px;
+  color:#fff;
   position:relative;
   overflow:hidden;
 }
@@ -89,40 +64,53 @@ header img{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(120deg,rgba(255,255,255,.12),transparent 55%);
+  background:linear-gradient(120deg,rgba(255,255,255,.15),transparent 60%);
 }
-.card-left{max-width:62%}
-.card-left h3{margin:0;font-size:17px}
-.card-left p{margin:4px 0 8px;font-size:14px;color:#bbb}
 
+.card-left{
+  max-width:65%;
+}
+.card-left h3{
+  margin:0;
+  font-size:16px;
+}
+.card-left p{
+  margin:4px 0 8px;
+  font-size:13px;
+  color:#b3b3b3;
+}
+
+/* BADGES */
 .badges{
   display:flex;
   gap:6px;
 }
 .badge{
   background:#1c1c1e;
-  padding:5px 8px;
+  padding:4px 8px;
   border-radius:12px;
   font-size:11px;
+  white-space:nowrap;
 }
 
+/* DERECHA */
 .card-right{
-  width:120px;
   text-align:right;
+  min-width:110px;
 }
 .price{
-  font-size:14px;
+  font-size:13px;
   font-weight:700;
 }
 .price small{
   display:block;
   font-size:11px;
-  color:#bbb;
+  color:#b3b3b3;
 }
 .cuotas{
   margin-top:6px;
   background:#1c1c1e;
-  padding:6px 10px;
+  padding:5px 10px;
   border-radius:12px;
   font-size:11px;
 }
@@ -130,17 +118,17 @@ header img{
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
-  bottom:20px;
+  bottom:18px;
   left:50%;
   transform:translateX(-50%);
   background:#4cc26b;
   color:#fff;
-  padding:16px 26px;
+  padding:14px 24px;
   border-radius:30px;
   font-size:16px;
   display:flex;
-  gap:10px;
   align-items:center;
+  gap:10px;
   box-shadow:0 15px 40px rgba(76,194,107,.45);
 }
 </style>
@@ -150,112 +138,120 @@ header img{
 
 <header>
   <img src="https://i.postimg.cc/prQyms1V/IMG_0127.png">
-  <div class="search">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" placeholder="Buscar modelo">
-  </div>
 </header>
 
-<!-- MENU DESLIZABLE -->
-<div class="tabs">
-  <a href="#iphone13pro">13 Pro</a>
-  <a href="#iphone13promax">13 Pro Max</a>
-  <a href="#iphone15">iPhone 15</a>
-  <a href="#iphone15promax">15 Pro Max</a>
-  <a href="#iphone16">iPhone 16</a>
-  <a href="#iphone16promax">16 Pro Max</a>
+<!-- FILTROS -->
+<div class="filters">
+  <button class="filter" onclick="filtrar('13pro')">iPhone 13 Pro</button>
+  <button class="filter" onclick="filtrar('13promax')">13 Pro Max</button>
+  <button class="filter" onclick="filtrar('15')">iPhone 15</button>
+  <button class="filter" onclick="filtrar('15promax')">15 Pro Max</button>
+  <button class="filter" onclick="filtrar('16')">iPhone 16</button>
+  <button class="filter" onclick="filtrar('16promax')">16 Pro Max</button>
 </div>
 
 <div class="list">
 
-<div id="iphone13pro" class="section">
-<h2>iPhone 13 Pro</h2>
-<div class="card">
+<!-- 13 PRO -->
+<div class="card producto 13pro">
   <div class="card-left">
     <h3>128GB · Negro Grafito</h3>
     <p>Estado 100%</p>
-    <div class="badges"><div class="badge">🔋100%</div><div class="badge">✔</div></div>
+    <div class="badges">
+      <div class="badge">🔋100%</div>
+      <div class="badge">30 días</div>
+      <div class="badge">✔</div>
+    </div>
   </div>
   <div class="card-right">
     <div class="price">USD 470<small>$707.350</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
-</div>
 
-<div id="iphone13promax" class="section">
-<h2>iPhone 13 Pro Max</h2>
-<div class="card">
+<!-- 13 PRO MAX -->
+<div class="card producto 13promax">
   <div class="card-left">
     <h3>128GB · Negro Grafito</h3>
     <p>Estado 100%</p>
-    <div class="badges"><div class="badge">🔋100%</div><div class="badge">✔</div></div>
+    <div class="badges">
+      <div class="badge">🔋100%</div>
+      <div class="badge">30 días</div>
+      <div class="badge">✔</div>
+    </div>
   </div>
   <div class="card-right">
     <div class="price">USD 515<small>$775.075</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
-</div>
 
-<div id="iphone15" class="section">
-<h2>iPhone 15</h2>
-<div class="card">
+<!-- 15 -->
+<div class="card producto 15">
   <div class="card-left">
     <h3>128GB · Negro</h3>
     <p>Estado 91%</p>
-    <div class="badges"><div class="badge">🔋91%</div><div class="badge">✔</div></div>
+    <div class="badges">
+      <div class="badge">🔋91%</div>
+      <div class="badge">30 días</div>
+      <div class="badge">✔</div>
+    </div>
   </div>
   <div class="card-right">
     <div class="price">USD 530<small>$797.650</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
-</div>
 
-<div id="iphone15promax" class="section">
-<h2>iPhone 15 Pro Max</h2>
-<div class="card">
+<!-- 15 PRO MAX -->
+<div class="card producto 15promax">
   <div class="card-left">
     <h3>256GB · Negro Titanium</h3>
     <p>Estado 100%</p>
-    <div class="badges"><div class="badge">🔋100%</div><div class="badge">✔</div></div>
+    <div class="badges">
+      <div class="badge">🔋100%</div>
+      <div class="badge">30 días</div>
+      <div class="badge">✔</div>
+    </div>
   </div>
   <div class="card-right">
     <div class="price">USD 800<small>$1.204.000</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
-</div>
 
-<div id="iphone16" class="section">
-<h2>iPhone 16</h2>
-<div class="card">
+<!-- 16 -->
+<div class="card producto 16">
   <div class="card-left">
     <h3>Sellado · Negro</h3>
     <p>Estado 100%</p>
-    <div class="badges"><div class="badge">🔋100%</div><div class="badge">✔ Nuevo</div></div>
+    <div class="badges">
+      <div class="badge">🔋100%</div>
+      <div class="badge">Nuevo</div>
+      <div class="badge">✔</div>
+    </div>
   </div>
   <div class="card-right">
     <div class="price">USD 825<small>$1.241.625</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
-</div>
 
-<div id="iphone16promax" class="section">
-<h2>iPhone 16 Pro Max</h2>
-<div class="card">
+<!-- 16 PRO MAX -->
+<div class="card producto 16promax">
   <div class="card-left">
     <h3>256GB · Negro Titanium</h3>
     <p>Estado 95%</p>
-    <div class="badges"><div class="badge">🔋95%</div><div class="badge">✔</div></div>
+    <div class="badges">
+      <div class="badge">🔋95%</div>
+      <div class="badge">30 días</div>
+      <div class="badge">✔</div>
+    </div>
   </div>
   <div class="card-right">
     <div class="price">USD 990<small>$1.489.950</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
-</div>
 </div>
 
 </div>
@@ -263,6 +259,14 @@ header img{
 <div class="whatsapp">
   <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
 </div>
+
+<script>
+function filtrar(clase){
+  document.querySelectorAll('.producto').forEach(p=>{
+    p.style.display = p.classList.contains(clase) ? 'flex' : 'none';
+  });
+}
+</script>
 
 </body>
 </html>
