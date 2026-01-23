@@ -17,11 +17,11 @@ body{
 
 /* HEADER */
 header{
-  padding:30px 20px 20px;
+  padding:32px 20px 20px;
   text-align:center;
 }
 header img{
-  width:120px; /* LOGO MÁS GRANDE */
+  width:130px;
   margin-bottom:18px;
 }
 
@@ -39,35 +39,16 @@ header img{
   width:100%;
 }
 
-/* TITULOS */
-.section{padding:20px}
-.title{font-size:28px;font-weight:800}
-.subtitle{color:#777}
-
-/* FILTROS */
-.filters{
-  display:flex;
-  gap:10px;
-  margin-top:16px;
-  overflow-x:auto;
-}
-.filter{
-  padding:10px 18px;
-  border-radius:22px;
-  background:#fff;
-  border:1px solid #ddd;
-  white-space:nowrap;
-  cursor:pointer;
-}
-.filter.active{
-  background:linear-gradient(135deg,#007aff,#00c6ff);
-  color:#fff;
-  border:none;
+/* SECCIONES */
+.section-title{
+  font-size:22px;
+  font-weight:800;
+  margin:26px 16px 10px;
 }
 
 /* LISTA */
 .list{
-  padding:0 16px 120px;
+  padding:0 16px 130px;
 }
 
 /* CARD */
@@ -77,54 +58,25 @@ header img{
   border-radius:26px;
   padding:14px 16px;
   margin-bottom:14px;
-  position:relative;
   display:flex;
   justify-content:space-between;
   gap:10px;
+  position:relative;
   overflow:hidden;
 }
 
-/* EFECTO BLANCO */
 .card::after{
   content:"";
   position:absolute;
   inset:0;
   background:linear-gradient(120deg,rgba(255,255,255,.12),transparent 55%);
-  border-radius:26px;
   pointer-events:none;
 }
 
-/* BADGE PRO */
-.pro-badge{
-  position:absolute;
-  top:10px;
-  left:14px;
-  background:linear-gradient(135deg,#007aff,#00c6ff);
-  color:white;
-  font-size:11px;
-  padding:4px 10px;
-  border-radius:14px;
-  font-weight:700;
-  z-index:2;
-}
+.card-left{max-width:62%;z-index:1}
+.card-left h3{margin:0;font-size:18px}
+.card-left p{margin:4px 0 8px;font-size:14px;color:#bbb}
 
-/* IZQUIERDA */
-.card-left{
-  max-width:62%;
-  z-index:1;
-  margin-top:18px;
-}
-.card-left h3{
-  margin:0;
-  font-size:20px;
-}
-.card-left p{
-  margin:4px 0 8px;
-  font-size:14px;
-  color:#bbb;
-}
-
-/* BADGES */
 .badges{
   display:flex;
   gap:6px;
@@ -139,7 +91,6 @@ header img{
   gap:5px;
 }
 
-/* DERECHA */
 .card-right{
   width:122px;
   display:flex;
@@ -148,6 +99,7 @@ header img{
   gap:6px;
   z-index:1;
 }
+
 .price{
   font-size:15px;
   font-weight:700;
@@ -163,37 +115,9 @@ header img{
   padding:6px 10px;
   border-radius:12px;
   font-size:11px;
-  cursor:pointer;
 }
 
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:200;
-}
-.modal-content{
-  background:#fff;
-  border-radius:20px;
-  padding:20px;
-  width:85%;
-  max-width:320px;
-}
-.close{
-  margin-top:12px;
-  background:#007aff;
-  color:#fff;
-  padding:10px;
-  text-align:center;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-/* WHATSAPP FLOTANTE */
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -208,7 +132,7 @@ header img{
   align-items:center;
   gap:10px;
   box-shadow:0 15px 40px rgba(76,194,107,.45);
-  z-index:300;
+  z-index:999;
 }
 </style>
 </head>
@@ -223,26 +147,14 @@ header img{
   </div>
 </header>
 
-<section class="section">
-  <div class="title">Stock disponible</div>
-  <div class="subtitle">Equipos verificados · Garantía</div>
-
-  <div class="filters">
-    <div class="filter active" data-filter="all">Todos</div>
-    <div class="filter" data-filter="13">iPhone 13</div>
-    <div class="filter" data-filter="15">iPhone 15</div>
-    <div class="filter" data-filter="16">iPhone 16</div>
-  </div>
-</section>
-
 <div class="list">
 
-<!-- 13 PRO -->
-<div class="card" data-model="13">
-  <div class="pro-badge">PRO</div>
+<div class="section-title">iPhone 13 Pro</div>
+
+<div class="card">
   <div class="card-left">
-    <h3>iPhone 13 Pro</h3>
-    <p>128GB · Negro Grafito</p>
+    <h3>128GB · Negro Grafito</h3>
+    <p>Estado 100%</p>
     <div class="badges">
       <div class="badge">🔋 100%</div>
       <div class="badge">✔ Verificado</div>
@@ -254,12 +166,27 @@ header img{
   </div>
 </div>
 
-<!-- 13 PRO MAX -->
-<div class="card" data-model="13">
-  <div class="pro-badge">PRO MAX</div>
+<div class="card">
   <div class="card-left">
-    <h3>iPhone 13 Pro Max</h3>
-    <p>128GB · Negro Grafito</p>
+    <h3>128GB · Sierra Blue</h3>
+    <p>Estado 100%</p>
+    <div class="badges">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">✔ Verificado</div>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">USD 470<small>$707.350</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
+
+<div class="section-title">iPhone 13 Pro Max</div>
+
+<div class="card">
+  <div class="card-left">
+    <h3>128GB · Negro Grafito</h3>
+    <p>Estado 100%</p>
     <div class="badges">
       <div class="badge">🔋 100%</div>
       <div class="badge">✔ Verificado</div>
@@ -271,12 +198,29 @@ header img{
   </div>
 </div>
 
-<!-- 16 PRO MAX -->
-<div class="card" data-model="16">
-  <div class="pro-badge">PRO MAX</div>
+<div class="section-title">iPhone 15 Pro Max</div>
+
+<div class="card">
   <div class="card-left">
-    <h3>iPhone 16 Pro Max</h3>
-    <p>256GB · Negro Titanium</p>
+    <h3>256GB · Negro Titanium</h3>
+    <p>Estado 100%</p>
+    <div class="badges">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">✔ Verificado</div>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">USD 800<small>$1.204.000</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
+
+<div class="section-title">iPhone 16 Pro Max</div>
+
+<div class="card">
+  <div class="card-left">
+    <h3>256GB · Negro Titanium</h3>
+    <p>Estado 95%</p>
     <div class="badges">
       <div class="badge">🔋 95%</div>
       <div class="badge">✔ Verificado</div>
@@ -294,38 +238,6 @@ header img{
   <i class="fa-brands fa-whatsapp"></i>
   Consultar por WhatsApp
 </div>
-
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h3>Planes de pago</h3>
-    <ul>
-      <li>3 cuotas sin interés</li>
-      <li>6 cuotas fijas</li>
-      <li>12 cuotas</li>
-    </ul>
-    <div class="close">Cerrar</div>
-  </div>
-</div>
-
-<script>
-document.querySelectorAll('.filter').forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const f=btn.dataset.filter;
-    document.querySelectorAll('.card').forEach(c=>{
-      c.style.display=(f==='all'||c.dataset.model===f)?'flex':'none';
-    });
-  }
-});
-
-const modal=document.getElementById('modal');
-document.querySelectorAll('.cuotas').forEach(b=>{
-  b.onclick=()=>modal.style.display='flex';
-});
-document.querySelector('.close').onclick=()=>modal.style.display='none';
-modal.onclick=e=>{if(e.target===modal)modal.style.display='none'};
-</script>
 
 </body>
 </html>
