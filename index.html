@@ -8,6 +8,7 @@
 <style>
 :root{
   --azul:#007aff;
+  --verde:#25D366;
 }
 
 body{
@@ -19,29 +20,42 @@ body{
 /* HEADER */
 header{
   text-align:center;
-  padding:24px 16px 10px;
+  padding:18px 16px 10px;
+  background:#f2f2f7;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
 
 header img{
   width:100px;
 }
 
-/* FILTROS */
+/* FILTROS DESLIZABLES */
 .filtros{
   display:flex;
   gap:10px;
-  justify-content:center;
-  margin:10px 0 20px;
-  flex-wrap:wrap;
+  overflow-x:auto;
+  padding:10px 14px 14px;
+  background:#f2f2f7;
+  position:sticky;
+  top:86px;
+  z-index:20;
+}
+
+.filtros::-webkit-scrollbar{
+  display:none;
 }
 
 .filter{
+  white-space:nowrap;
   padding:8px 16px;
   border-radius:18px;
   border:1px solid #d1d1d6;
   background:white;
   font-size:14px;
   cursor:pointer;
+  flex-shrink:0;
 }
 
 .filter.active{
@@ -54,10 +68,10 @@ header img{
 .container{
   max-width:500px;
   margin:auto;
-  padding:0 14px 40px;
+  padding:10px 14px 40px;
 }
 
-/* ===== CARD (CAMBIO SOLO ACÁ) ===== */
+/* CARD */
 .card{
   background:#000;
   border-radius:22px;
@@ -97,6 +111,7 @@ header img{
   color:white;
 }
 
+/* DERECHA */
 .card-right{
   text-align:right;
   color:white;
@@ -112,17 +127,27 @@ header img{
   color:#b3b3b3;
 }
 
-.cuotas-btn{
+.cuotas-btn,
+.wp-btn{
+  display:block;
+  width:100%;
   margin-top:6px;
-  padding:6px 12px;
+  padding:6px 10px;
   border-radius:14px;
-  background:var(--azul);
-  color:white;
   font-size:12px;
   border:none;
   cursor:pointer;
 }
-/* ===== FIN CARD ===== */
+
+.cuotas-btn{
+  background:var(--azul);
+  color:white;
+}
+
+.wp-btn{
+  background:var(--verde);
+  color:white;
+}
 
 /* MODAL */
 .modal{
@@ -132,6 +157,7 @@ header img{
   background:rgba(0,0,0,.6);
   justify-content:center;
   align-items:center;
+  z-index:50;
 }
 
 .modal-content{
@@ -171,6 +197,7 @@ header img{
 
 <div class="container">
 
+<!-- IPHONE 16 -->
 <div class="card" data-cat="16">
   <div class="card-left">
     <h3>iPhone 16</h3>
@@ -187,9 +214,13 @@ header img{
       <small>$1.245.750</small>
     </div>
     <button class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</button>
+    <a class="wp-btn" href="https://wa.me/5493510000000?text=Hola!%20Quiero%20consultar%20por%20el%20iPhone%2016" target="_blank">
+      WhatsApp
+    </a>
   </div>
 </div>
 
+<!-- IPHONE 16 PRO -->
 <div class="card" data-cat="16pro">
   <div class="card-left">
     <h3>iPhone 16 Pro</h3>
@@ -206,9 +237,13 @@ header img{
       <small>$1.208.000</small>
     </div>
     <button class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</button>
+    <a class="wp-btn" href="https://wa.me/5493510000000?text=Hola!%20Quiero%20consultar%20por%20el%20iPhone%2016%20Pro" target="_blank">
+      WhatsApp
+    </a>
   </div>
 </div>
 
+<!-- IPHONE 16 PRO MAX -->
 <div class="card" data-cat="16promax">
   <div class="card-left">
     <h3>iPhone 16 Pro Max</h3>
@@ -225,9 +260,13 @@ header img{
       <small>$1.494.000</small>
     </div>
     <button class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</button>
+    <a class="wp-btn" href="https://wa.me/5493510000000?text=Hola!%20Quiero%20consultar%20por%20el%20iPhone%2016%20Pro%20Max" target="_blank">
+      WhatsApp
+    </a>
   </div>
 </div>
 
+<!-- PS5 -->
 <div class="card" data-cat="ps5">
   <div class="card-left">
     <h3>PlayStation 5</h3>
@@ -243,6 +282,9 @@ header img{
       <small>$883.335</small>
     </div>
     <button class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</button>
+    <a class="wp-btn" href="https://wa.me/5493510000000?text=Hola!%20Quiero%20consultar%20por%20la%20PS5" target="_blank">
+      WhatsApp
+    </a>
   </div>
 </div>
 
