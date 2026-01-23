@@ -8,7 +8,7 @@
 <style>
 :root{
   --fondo:#f5f5f7;
-  --card:#e6e6eb;          /* gris clarito */
+  --card:#e6e6eb;
   --texto:#1c1c1e;
   --gris:#6e6e73;
   --azul:#007aff;
@@ -61,7 +61,6 @@ header img{
   border:1px solid #d1d1d6;
   font-size:14px;
   cursor:pointer;
-  white-space:nowrap;
 }
 
 .filter.active{
@@ -82,6 +81,7 @@ header img{
   padding:20px;
   margin-bottom:22px;
   box-shadow:0 12px 28px rgba(0,0,0,.12);
+  position:relative;
 }
 
 .card h3{
@@ -118,16 +118,16 @@ header img{
   font-size:12px;
 }
 
-/* BOTÓN CUOTAS (CHICO Y VISIBLE) */
+/* BOTÓN CUOTAS */
 .cuotas-btn{
-  margin-top:14px;
-  display:inline-block;
-  padding:6px 14px;
+  position:absolute;
+  top:18px;
+  right:18px;
+  padding:5px 12px;
   border-radius:14px;
   background:#007aff;
   color:white;
-  font-size:13px;
-  font-weight:500;
+  font-size:12px;
   cursor:pointer;
 }
 
@@ -142,9 +142,7 @@ header img{
   z-index:1000;
 }
 
-.modal.active{
-  display:flex;
-}
+.modal.active{display:flex}
 
 .modal-content{
   background:white;
@@ -152,10 +150,6 @@ header img{
   width:90%;
   max-width:360px;
   padding:22px;
-}
-
-.modal-content h3{
-  margin-top:0;
 }
 
 .plan{
@@ -192,57 +186,76 @@ header img{
 <body>
 
 <header>
-  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png" alt="Logo">
+  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png">
   <div class="search">🔍 Buscar producto</div>
 </header>
 
 <div class="filters">
-  <div class="filter active" onclick="filtrar('all')">Todos</div>
-  <div class="filter" onclick="filtrar('16')">iPhone 16</div>
-  <div class="filter" onclick="filtrar('ps5')">PS5</div>
+  <div class="filter active" onclick="filtrar('all',this)">Todos</div>
+  <div class="filter" onclick="filtrar('16',this)">iPhone 16</div>
+  <div class="filter" onclick="filtrar('16pro',this)">16 Pro</div>
+  <div class="filter" onclick="filtrar('16promax',this)">16 Pro Max</div>
+  <div class="filter" onclick="filtrar('ps5',this)">PS5</div>
 </div>
 
 <div class="list">
 
-  <!-- IPHONE 16 -->
-  <div class="card" data-model="16">
-    <h3>iPhone 16</h3>
-    <div class="detalle">128GB • Negro • 100%</div>
-    <div class="precio"><strong>USD 825</strong></div>
-    <div class="info">
-      <span>🔋 Batería 100%</span>
-      <span>🛡 30 días</span>
-      <span>✔ Verificado</span>
-    </div>
-    <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
+<!-- IPHONE 16 -->
+<div class="card" data-model="16">
+  <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
+  <h3>iPhone 16</h3>
+  <div class="detalle">128GB • Negro • 100%</div>
+  <div class="precio"><strong>$1.245.750</strong><br>USD 825</div>
+  <div class="info">
+    <span>🔋 100%</span><span>🛡 30 días</span><span>✔ Verificado</span>
   </div>
+</div>
 
-  <!-- PS5 -->
-  <div class="card" data-model="ps5">
-    <h3>PlayStation 5</h3>
-    <div class="detalle">Nueva</div>
-    <div class="precio"><strong>USD 585</strong></div>
-    <div class="info">
-      <span>🛡 30 días</span>
-    </div>
-    <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
+<!-- IPHONE 16 PRO -->
+<div class="card" data-model="16pro">
+  <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
+  <h3>iPhone 16 Pro</h3>
+  <div class="detalle">128GB • Blanco Titanium • 90%</div>
+  <div class="precio"><strong>$1.208.000</strong><br>USD 800</div>
+  <div class="info">
+    <span>🔋 90%</span><span>🛡 30 días</span><span>✔ Verificado</span>
   </div>
+</div>
+
+<!-- IPHONE 16 PRO MAX -->
+<div class="card" data-model="16promax">
+  <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
+  <h3>iPhone 16 Pro Max</h3>
+  <div class="detalle">Negro Titanium</div>
+  <div class="precio"><strong>$1.494.000</strong><br>USD 990</div>
+  <div class="info">
+    <span>🛡 30 días</span><span>✔ Verificado</span>
+  </div>
+</div>
+
+<!-- PS5 -->
+<div class="card" data-model="ps5">
+  <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
+  <h3>PlayStation 5</h3>
+  <div class="detalle">Nueva</div>
+  <div class="precio"><strong>$883.335</strong><br>USD 585</div>
+  <div class="info">
+    <span>🛡 30 días</span>
+  </div>
+</div>
 
 </div>
 
 <a class="whatsapp" href="#">Consultar por WhatsApp</a>
 
-<!-- MODAL CUOTAS -->
+<!-- MODAL -->
 <div class="modal" id="modalCuotas" onclick="cerrarCuotas(event)">
   <div class="modal-content">
     <div class="close" onclick="cerrarCuotas()">✕</div>
     <h3>Planes de pago</h3>
-
     <div class="plan">💳 3 cuotas sin interés</div>
     <div class="plan">💳 6 cuotas fijas</div>
-    <div class="plan">💳 12 cuotas con interés</div>
-
-    <small>* Consultar tarjetas y bancos</small>
+    <div class="plan">💳 12 cuotas</div>
   </div>
 </div>
 
@@ -250,22 +263,16 @@ header img{
 function abrirCuotas(){
   document.getElementById('modalCuotas').classList.add('active');
 }
-
 function cerrarCuotas(e){
-  if(!e || e.target.id === 'modalCuotas'){
+  if(!e || e.target.id==='modalCuotas'){
     document.getElementById('modalCuotas').classList.remove('active');
   }
 }
-
-function filtrar(tipo){
+function filtrar(tipo,btn){
   document.querySelectorAll('.filter').forEach(f=>f.classList.remove('active'));
-  event.target.classList.add('active');
-
-  document.querySelectorAll('.card').forEach(card=>{
-    card.style.display =
-      (tipo === 'all' || card.dataset.model === tipo)
-      ? 'block'
-      : 'none';
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display = (tipo==='all'||c.dataset.model===tipo)?'block':'none';
   });
 }
 </script>
