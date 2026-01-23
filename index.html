@@ -8,15 +8,12 @@
 <style>
 :root{
   --azul:#007aff;
-  --gris-card:#e5e5ea;
-  --gris-texto:#6e6e73;
 }
 
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:#f2f2f7;
-  color:#000;
 }
 
 /* HEADER */
@@ -26,8 +23,7 @@ header{
 }
 
 header img{
-  width:90px;
-  margin-bottom:10px;
+  width:100px;
 }
 
 /* FILTROS */
@@ -36,6 +32,7 @@ header img{
   gap:10px;
   justify-content:center;
   margin:10px 0 20px;
+  flex-wrap:wrap;
 }
 
 .filter{
@@ -60,18 +57,21 @@ header img{
   padding:0 14px 40px;
 }
 
-/* CARD */
+/* ===== CARD (CAMBIO SOLO ACÁ) ===== */
 .card{
-  background:var(--gris-card);
+  background:#000;
   border-radius:22px;
   padding:14px 16px;
   margin-bottom:14px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:flex-start;
 }
 
-/* IZQ */
+.card-left{
+  color:white;
+}
+
 .card-left h3{
   margin:0;
   font-size:16px;
@@ -80,7 +80,7 @@ header img{
 .card-left p{
   margin:4px 0 8px;
   font-size:13px;
-  color:var(--gris-texto);
+  color:#b3b3b3;
 }
 
 .badges{
@@ -91,14 +91,15 @@ header img{
 
 .badges span{
   font-size:11px;
-  background:#f2f2f7;
+  background:#1c1c1e;
   padding:4px 8px;
   border-radius:10px;
+  color:white;
 }
 
-/* DER */
 .card-right{
   text-align:right;
+  color:white;
 }
 
 .price strong{
@@ -108,7 +109,7 @@ header img{
 
 .price small{
   font-size:12px;
-  color:var(--gris-texto);
+  color:#b3b3b3;
 }
 
 .cuotas-btn{
@@ -121,13 +122,14 @@ header img{
   border:none;
   cursor:pointer;
 }
+/* ===== FIN CARD ===== */
 
 /* MODAL */
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.6);
   justify-content:center;
   align-items:center;
 }
@@ -139,10 +141,6 @@ header img{
   max-width:300px;
   width:90%;
   text-align:center;
-}
-
-.modal-content h4{
-  margin-top:0;
 }
 
 .close{
@@ -173,7 +171,6 @@ header img{
 
 <div class="container">
 
-<!-- IPHONE 16 -->
 <div class="card" data-cat="16">
   <div class="card-left">
     <h3>iPhone 16</h3>
@@ -193,7 +190,6 @@ header img{
   </div>
 </div>
 
-<!-- IPHONE 16 PRO -->
 <div class="card" data-cat="16pro">
   <div class="card-left">
     <h3>iPhone 16 Pro</h3>
@@ -213,7 +209,6 @@ header img{
   </div>
 </div>
 
-<!-- IPHONE 16 PRO MAX -->
 <div class="card" data-cat="16promax">
   <div class="card-left">
     <h3>iPhone 16 Pro Max</h3>
@@ -233,7 +228,6 @@ header img{
   </div>
 </div>
 
-<!-- PS5 -->
 <div class="card" data-cat="ps5">
   <div class="card-left">
     <h3>PlayStation 5</h3>
@@ -254,7 +248,6 @@ header img{
 
 </div>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
     <h4>Planes de pago</h4>
@@ -269,7 +262,8 @@ function filtrar(cat,btn){
   btn.classList.add('active');
 
   document.querySelectorAll('.card').forEach(card=>{
-    card.style.display = (cat==='all'||card.dataset.cat===cat) ? 'flex' : 'none';
+    card.style.display =
+      (cat==='all'||card.dataset.cat===cat) ? 'flex' : 'none';
   });
 }
 
