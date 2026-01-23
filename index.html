@@ -21,7 +21,7 @@ header{
   text-align:center;
 }
 header img{
-  width:88px; /* LOGO MÁS GRANDE */
+  width:88px;
   margin-bottom:14px;
 }
 
@@ -67,7 +67,7 @@ header img{
 
 /* LISTA */
 .list{
-  padding:0 16px 170px; /* espacio para botón whatsapp */
+  padding:0 16px 170px;
 }
 
 /* CARD */
@@ -81,7 +81,6 @@ header img{
   justify-content:space-between;
   gap:10px;
   position:relative;
-  overflow:hidden;
 }
 
 .card::after{
@@ -90,23 +89,12 @@ header img{
   inset:0;
   background:linear-gradient(120deg,rgba(255,255,255,.12),transparent 55%);
   border-radius:26px;
-  pointer-events:none;
 }
 
 /* IZQ */
-.card-left{
-  max-width:62%;
-  z-index:1;
-}
-.card-left h3{
-  margin:0;
-  font-size:20px;
-}
-.card-left p{
-  margin:4px 0 8px;
-  font-size:14px;
-  color:#bbb;
-}
+.card-left{max-width:62%;z-index:1}
+.card-left h3{margin:0;font-size:20px}
+.card-left p{margin:4px 0 8px;font-size:14px;color:#bbb}
 
 /* BADGES */
 .badges{
@@ -122,7 +110,6 @@ header img{
   display:flex;
   align-items:center;
   gap:5px;
-  white-space:nowrap;
 }
 
 /* DERECHA */
@@ -134,16 +121,8 @@ header img{
   gap:6px;
   z-index:1;
 }
-
-.price{
-  font-size:15px;
-  font-weight:700;
-}
-.price small{
-  display:block;
-  font-size:11px;
-  color:#bbb;
-}
+.price{font-size:15px;font-weight:700}
+.price small{display:block;font-size:11px;color:#bbb}
 
 .cuotas{
   background:#1c1c1e;
@@ -151,10 +130,9 @@ header img{
   border-radius:12px;
   font-size:11px;
   cursor:pointer;
-  white-space:nowrap;
 }
 
-/* MODAL CUOTAS */
+/* MODAL */
 .modal{
   position:fixed;
   inset:0;
@@ -171,8 +149,6 @@ header img{
   width:85%;
   max-width:320px;
 }
-.modal-content h3{margin-top:0}
-.modal-content ul{padding-left:18px}
 .close{
   margin-top:12px;
   background:#007aff;
@@ -183,7 +159,7 @@ header img{
   cursor:pointer;
 }
 
-/* WHATSAPP FLOTANTE */
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -198,7 +174,6 @@ header img{
   align-items:center;
   gap:10px;
   box-shadow:0 15px 40px rgba(76,194,107,.45);
-  z-index:50;
 }
 </style>
 </head>
@@ -206,7 +181,7 @@ header img{
 <body>
 
 <header>
-  <img src="https://i.postimg.cc/prQyms1V/IMG_0127.png">
+  <img src="https://i.imgur.com/Z6X8Z8M.png">
   <div class="search">
     <i class="fa-solid fa-magnifying-glass"></i>
     <input type="text" placeholder="Buscar modelo o capacidad">
@@ -219,81 +194,138 @@ header img{
 
   <div class="filters">
     <div class="filter active" data-filter="all">Todos</div>
+    <div class="filter" data-filter="13">iPhone 13</div>
+    <div class="filter" data-filter="15">iPhone 15</div>
     <div class="filter" data-filter="16">iPhone 16</div>
-    <div class="filter" data-filter="16pro">16 Pro</div>
-    <div class="filter" data-filter="16pm">16 Pro Max</div>
   </div>
 </section>
 
 <div class="list">
 
-  <!-- iPhone 16 -->
-  <div class="card" data-model="16">
-    <div class="card-left">
-      <h3>iPhone 16</h3>
-      <p>128GB · Negro</p>
-      <div class="badges">
-        <div class="badge">🔋 100%</div>
-        <div class="badge">🛡 30 días</div>
-        <div class="badge">✔ Verificado</div>
-      </div>
-    </div>
-    <div class="card-right">
-      <div class="price">USD 825<small>ARS $1.245.750</small></div>
-      <div class="cuotas">Ver cuotas</div>
+<!-- iPhone 13 Pro -->
+<div class="card" data-model="13">
+  <div class="card-left">
+    <h3>iPhone 13 Pro</h3>
+    <p>128GB · Negro Grafito</p>
+    <div class="badges">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">✔ Verificado</div>
     </div>
   </div>
+  <div class="card-right">
+    <div class="price">USD 470<small>ARS $707.350</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
 
-  <!-- iPhone 16 Pro -->
-  <div class="card" data-model="16pro">
-    <div class="card-left">
-      <h3>iPhone 16 Pro</h3>
-      <p>128GB · Blanco Titanium</p>
-      <div class="badges">
-        <div class="badge">🔋 90%</div>
-        <div class="badge">🛡 30 días</div>
-        <div class="badge">✔ Verificado</div>
-      </div>
-    </div>
-    <div class="card-right">
-      <div class="price">USD 800<small>ARS $1.208.000</small></div>
-      <div class="cuotas">Ver cuotas</div>
+<div class="card" data-model="13">
+  <div class="card-left">
+    <h3>iPhone 13 Pro</h3>
+    <p>128GB · Sierra Blue</p>
+    <div class="badges">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">✔ Verificado</div>
     </div>
   </div>
+  <div class="card-right">
+    <div class="price">USD 470<small>ARS $707.350</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
 
-  <!-- iPhone 16 Pro Max -->
-  <div class="card" data-model="16pm">
-    <div class="card-left">
-      <h3>iPhone 16 Pro Max</h3>
-      <p>128GB · Negro Titanium</p>
-      <div class="badges">
-        <div class="badge">🔋 100%</div>
-        <div class="badge">🛡 30 días</div>
-        <div class="badge">✔ Verificado</div>
-      </div>
-    </div>
-    <div class="card-right">
-      <div class="price">USD 990<small>ARS $1.494.000</small></div>
-      <div class="cuotas">Ver cuotas</div>
+<!-- iPhone 13 Pro Max -->
+<div class="card" data-model="13">
+  <div class="card-left">
+    <h3>iPhone 13 Pro Max</h3>
+    <p>128GB · Negro Grafito</p>
+    <div class="badges">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">✔ Verificado</div>
     </div>
   </div>
+  <div class="card-right">
+    <div class="price">USD 515<small>ARS $775.075</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
 
-  <!-- PS5 -->
-  <div class="card" data-model="ps5">
-    <div class="card-left">
-      <h3>PlayStation 5</h3>
-      <p>Edición estándar</p>
-      <div class="badges">
-        <div class="badge">🎮 Nueva</div>
-        <div class="badge">🛡 30 días</div>
-        <div class="badge">✔ Verificado</div>
-      </div>
-    </div>
-    <div class="card-right">
-      <div class="price">USD 585<small>ARS $883.335</small></div>
-      <div class="cuotas">Ver cuotas</div>
+<!-- iPhone 15 -->
+<div class="card" data-model="15">
+  <div class="card-left">
+    <h3>iPhone 15</h3>
+    <p>128GB · Negro</p>
+    <div class="badges">
+      <div class="badge">🔋 91%</div>
+      <div class="badge">✔ Verificado</div>
     </div>
   </div>
+  <div class="card-right">
+    <div class="price">USD 530<small>ARS $797.650</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
+
+<!-- iPhone 15 Pro Max -->
+<div class="card" data-model="15">
+  <div class="card-left">
+    <h3>iPhone 15 Pro Max</h3>
+    <p>256GB · Negro Titanium</p>
+    <div class="badges">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">✔ Verificado</div>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">USD 800<small>ARS $1.204.000</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
+
+<div class="card" data-model="15">
+  <div class="card-left">
+    <h3>iPhone 15 Pro Max</h3>
+    <p>256GB · Azul Titanium</p>
+    <div class="badges">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">✔ Verificado</div>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">USD 800<small>ARS $1.204.000</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
+
+<!-- iPhone 16 -->
+<div class="card" data-model="16">
+  <div class="card-left">
+    <h3>iPhone 16</h3>
+    <p>Sellado · Negro</p>
+    <div class="badges">
+      <div class="badge">🔋 100%</div>
+      <div class="badge">✔ Nuevo</div>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">USD 825<small>ARS $1.241.625</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
+
+<div class="card" data-model="16">
+  <div class="card-left">
+    <h3>iPhone 16 Pro Max</h3>
+    <p>256GB · Negro Titanium</p>
+    <div class="badges">
+      <div class="badge">🔋 95%</div>
+      <div class="badge">✔ Verificado</div>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">USD 990<small>ARS $1.489.950</small></div>
+    <div class="cuotas">Ver cuotas</div>
+  </div>
+</div>
 
 </div>
 
@@ -302,21 +334,19 @@ header img{
   Consultar por WhatsApp
 </div>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
     <h3>Planes de pago</h3>
     <ul>
       <li>3 cuotas sin interés</li>
       <li>6 cuotas fijas</li>
-      <li>12 cuotas con interés</li>
+      <li>12 cuotas</li>
     </ul>
     <div class="close">Cerrar</div>
   </div>
 </div>
 
 <script>
-/* FILTROS */
 document.querySelectorAll('.filter').forEach(btn=>{
   btn.onclick=()=>{
     document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
@@ -328,7 +358,6 @@ document.querySelectorAll('.filter').forEach(btn=>{
   }
 });
 
-/* MODAL */
 const modal=document.getElementById('modal');
 document.querySelectorAll('.cuotas').forEach(b=>{
   b.onclick=()=>modal.style.display='flex';
