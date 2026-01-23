@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo</title>
+<title>Catálogo iPhone</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
@@ -17,14 +18,15 @@ body{
 
 /* HEADER */
 header{
-  padding:32px 20px 18px;
+  padding:30px 16px 16px;
   text-align:center;
 }
 header img{
-  width:140px;
+  width:150px;
   margin-bottom:18px;
 }
 
+/* BUSCADOR */
 .search{
   background:#e9e9ec;
   border-radius:22px;
@@ -32,23 +34,37 @@ header img{
   display:flex;
   gap:10px;
 }
-.search input{
-  border:none;
-  background:none;
-  outline:none;
-  width:100%;
-}
 
-/* TITULO CON DEGRADADO */
-.section-title{
-  margin:28px 16px 14px;
-  padding:12px 20px;
-  border-radius:22px;
-  font-size:18px;
-  font-weight:800;
+/* MENU DESLIZABLE */
+.tabs{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding:16px;
+}
+.tabs a{
+  flex-shrink:0;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:700;
+  font-size:14px;
   color:#fff;
+  text-decoration:none;
   background:linear-gradient(135deg,#007aff,#00c6ff);
   box-shadow:0 6px 18px rgba(0,122,255,.35);
+}
+
+/* TITULOS SECCION */
+.section{
+  padding:10px 16px 4px;
+}
+.section h2{
+  margin:24px 0 12px;
+  padding:12px 20px;
+  border-radius:22px;
+  color:#fff;
+  font-size:18px;
+  background:linear-gradient(135deg,#007aff,#00c6ff);
 }
 
 /* LISTA */
@@ -69,28 +85,15 @@ header img{
   position:relative;
   overflow:hidden;
 }
-
 .card::after{
   content:"";
   position:absolute;
   inset:0;
   background:linear-gradient(120deg,rgba(255,255,255,.12),transparent 55%);
-  pointer-events:none;
 }
-
-.card-left{
-  max-width:62%;
-  z-index:1;
-}
-.card-left h3{
-  margin:0;
-  font-size:18px;
-}
-.card-left p{
-  margin:4px 0 8px;
-  font-size:14px;
-  color:#bbb;
-}
+.card-left{max-width:62%}
+.card-left h3{margin:0;font-size:17px}
+.card-left p{margin:4px 0 8px;font-size:14px;color:#bbb}
 
 .badges{
   display:flex;
@@ -101,22 +104,14 @@ header img{
   padding:5px 8px;
   border-radius:12px;
   font-size:11px;
-  display:flex;
-  align-items:center;
-  gap:5px;
 }
 
 .card-right{
-  width:122px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:6px;
-  z-index:1;
+  width:120px;
+  text-align:right;
 }
-
 .price{
-  font-size:15px;
+  font-size:14px;
   font-weight:700;
 }
 .price small{
@@ -124,8 +119,8 @@ header img{
   font-size:11px;
   color:#bbb;
 }
-
 .cuotas{
+  margin-top:6px;
   background:#1c1c1e;
   padding:6px 10px;
   border-radius:12px;
@@ -140,14 +135,13 @@ header img{
   transform:translateX(-50%);
   background:#4cc26b;
   color:#fff;
-  padding:16px 28px;
+  padding:16px 26px;
   border-radius:30px;
-  font-size:17px;
+  font-size:16px;
   display:flex;
-  align-items:center;
   gap:10px;
+  align-items:center;
   box-shadow:0 15px 40px rgba(76,194,107,.45);
-  z-index:999;
 }
 </style>
 </head>
@@ -158,155 +152,116 @@ header img{
   <img src="https://i.postimg.cc/prQyms1V/IMG_0127.png">
   <div class="search">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" placeholder="Buscar modelo o capacidad">
+    <input type="text" placeholder="Buscar modelo">
   </div>
 </header>
 
+<!-- MENU DESLIZABLE -->
+<div class="tabs">
+  <a href="#iphone13pro">13 Pro</a>
+  <a href="#iphone13promax">13 Pro Max</a>
+  <a href="#iphone15">iPhone 15</a>
+  <a href="#iphone15promax">15 Pro Max</a>
+  <a href="#iphone16">iPhone 16</a>
+  <a href="#iphone16promax">16 Pro Max</a>
+</div>
+
 <div class="list">
 
-<div class="section-title">iPhone 13 Pro</div>
-
+<div id="iphone13pro" class="section">
+<h2>iPhone 13 Pro</h2>
 <div class="card">
   <div class="card-left">
     <h3>128GB · Negro Grafito</h3>
     <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div><div class="badge">✔ Verificado</div>
-    </div>
+    <div class="badges"><div class="badge">🔋100%</div><div class="badge">✔</div></div>
   </div>
   <div class="card-right">
     <div class="price">USD 470<small>$707.350</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
-
-<div class="card">
-  <div class="card-left">
-    <h3>128GB · Sierra Blue</h3>
-    <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div><div class="badge">✔ Verificado</div>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="price">USD 470<small>$707.350</small></div>
-    <div class="cuotas">Ver cuotas</div>
-  </div>
 </div>
 
-<div class="section-title">iPhone 13 Pro Max</div>
-
+<div id="iphone13promax" class="section">
+<h2>iPhone 13 Pro Max</h2>
 <div class="card">
   <div class="card-left">
     <h3>128GB · Negro Grafito</h3>
     <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div><div class="badge">✔ Verificado</div>
-    </div>
+    <div class="badges"><div class="badge">🔋100%</div><div class="badge">✔</div></div>
   </div>
   <div class="card-right">
     <div class="price">USD 515<small>$775.075</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
-
-<div class="card">
-  <div class="card-left">
-    <h3>128GB · Negro Grafito</h3>
-    <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div><div class="badge">✔ Verificado</div>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="price">USD 515<small>$775.015</small></div>
-    <div class="cuotas">Ver cuotas</div>
-  </div>
 </div>
 
-<div class="section-title">iPhone 15</div>
-
+<div id="iphone15" class="section">
+<h2>iPhone 15</h2>
 <div class="card">
   <div class="card-left">
     <h3>128GB · Negro</h3>
     <p>Estado 91%</p>
-    <div class="badges">
-      <div class="badge">🔋 91%</div><div class="badge">✔ Verificado</div>
-    </div>
+    <div class="badges"><div class="badge">🔋91%</div><div class="badge">✔</div></div>
   </div>
   <div class="card-right">
     <div class="price">USD 530<small>$797.650</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
+</div>
 
-<div class="section-title">iPhone 15 Pro Max</div>
-
+<div id="iphone15promax" class="section">
+<h2>iPhone 15 Pro Max</h2>
 <div class="card">
   <div class="card-left">
     <h3>256GB · Negro Titanium</h3>
     <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div><div class="badge">✔ Verificado</div>
-    </div>
+    <div class="badges"><div class="badge">🔋100%</div><div class="badge">✔</div></div>
   </div>
   <div class="card-right">
     <div class="price">USD 800<small>$1.204.000</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
-
-<div class="card">
-  <div class="card-left">
-    <h3>256GB · Azul Titanium</h3>
-    <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div><div class="badge">✔ Verificado</div>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="price">USD 800<small>$1.204.000</small></div>
-    <div class="cuotas">Ver cuotas</div>
-  </div>
 </div>
 
-<div class="section-title">iPhone 16</div>
-
+<div id="iphone16" class="section">
+<h2>iPhone 16</h2>
 <div class="card">
   <div class="card-left">
     <h3>Sellado · Negro</h3>
     <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div><div class="badge">✔ Nuevo</div>
-    </div>
+    <div class="badges"><div class="badge">🔋100%</div><div class="badge">✔ Nuevo</div></div>
   </div>
   <div class="card-right">
     <div class="price">USD 825<small>$1.241.625</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
+</div>
 
-<div class="section-title">iPhone 16 Pro Max</div>
-
+<div id="iphone16promax" class="section">
+<h2>iPhone 16 Pro Max</h2>
 <div class="card">
   <div class="card-left">
     <h3>256GB · Negro Titanium</h3>
     <p>Estado 95%</p>
-    <div class="badges">
-      <div class="badge">🔋 95%</div><div class="badge">✔ Verificado</div>
-    </div>
+    <div class="badges"><div class="badge">🔋95%</div><div class="badge">✔</div></div>
   </div>
   <div class="card-right">
     <div class="price">USD 990<small>$1.489.950</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
+</div>
 
 </div>
 
 <div class="whatsapp">
-  <i class="fa-brands fa-whatsapp"></i>
-  Consultar por WhatsApp
+  <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
 </div>
 
 </body>
