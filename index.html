@@ -61,10 +61,12 @@ header img{
   border:1px solid #d1d1d6;
   font-size:14px;
   cursor:pointer;
+  white-space:nowrap;
 }
 
+/* 👉 AZUL NORMAL, SIN DEGRADADO */
 .filter.active{
-  background:linear-gradient(135deg,#007aff,#4da3ff);
+  background:var(--azul);
   color:white;
   border:none;
 }
@@ -118,14 +120,14 @@ header img{
   font-size:12px;
 }
 
-/* BOTÓN CUOTAS */
+/* BOTÓN CUOTAS (NO ESTIRA) */
 .cuotas-btn{
   position:absolute;
   top:18px;
   right:18px;
   padding:5px 12px;
   border-radius:14px;
-  background:#007aff;
+  background:var(--azul);
   color:white;
   font-size:12px;
   cursor:pointer;
@@ -186,7 +188,7 @@ header img{
 <body>
 
 <header>
-  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png">
+  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png" alt="Logo">
   <div class="search">🔍 Buscar producto</div>
 </header>
 
@@ -200,7 +202,7 @@ header img{
 
 <div class="list">
 
-<!-- IPHONE 16 -->
+<!-- iPhone 16 -->
 <div class="card" data-model="16">
   <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
   <h3>iPhone 16</h3>
@@ -211,7 +213,7 @@ header img{
   </div>
 </div>
 
-<!-- IPHONE 16 PRO -->
+<!-- iPhone 16 Pro -->
 <div class="card" data-model="16pro">
   <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
   <h3>iPhone 16 Pro</h3>
@@ -222,7 +224,7 @@ header img{
   </div>
 </div>
 
-<!-- IPHONE 16 PRO MAX -->
+<!-- iPhone 16 Pro Max -->
 <div class="card" data-model="16promax">
   <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
   <h3>iPhone 16 Pro Max</h3>
@@ -248,7 +250,7 @@ header img{
 
 <a class="whatsapp" href="#">Consultar por WhatsApp</a>
 
-<!-- MODAL -->
+<!-- MODAL CUOTAS -->
 <div class="modal" id="modalCuotas" onclick="cerrarCuotas(event)">
   <div class="modal-content">
     <div class="close" onclick="cerrarCuotas()">✕</div>
