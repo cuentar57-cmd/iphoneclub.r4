@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iPhone Club</title>
+<title>Catálogo</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -17,17 +17,17 @@ body{
 
 /* HEADER */
 header{
-  padding:26px 20px 18px;
+  padding:30px 20px 20px;
   text-align:center;
 }
 header img{
-  width:88px;
-  margin-bottom:14px;
+  width:120px; /* LOGO MÁS GRANDE */
+  margin-bottom:18px;
 }
 
 .search{
   background:#e9e9ec;
-  border-radius:20px;
+  border-radius:22px;
   padding:14px 18px;
   display:flex;
   gap:10px;
@@ -67,7 +67,7 @@ header img{
 
 /* LISTA */
 .list{
-  padding:0 16px 170px;
+  padding:0 16px 120px;
 }
 
 /* CARD */
@@ -77,30 +77,57 @@ header img{
   border-radius:26px;
   padding:14px 16px;
   margin-bottom:14px;
+  position:relative;
   display:flex;
   justify-content:space-between;
   gap:10px;
-  position:relative;
+  overflow:hidden;
 }
 
+/* EFECTO BLANCO */
 .card::after{
   content:"";
   position:absolute;
   inset:0;
   background:linear-gradient(120deg,rgba(255,255,255,.12),transparent 55%);
   border-radius:26px;
+  pointer-events:none;
 }
 
-/* IZQ */
-.card-left{max-width:62%;z-index:1}
-.card-left h3{margin:0;font-size:20px}
-.card-left p{margin:4px 0 8px;font-size:14px;color:#bbb}
+/* BADGE PRO */
+.pro-badge{
+  position:absolute;
+  top:10px;
+  left:14px;
+  background:linear-gradient(135deg,#007aff,#00c6ff);
+  color:white;
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:14px;
+  font-weight:700;
+  z-index:2;
+}
+
+/* IZQUIERDA */
+.card-left{
+  max-width:62%;
+  z-index:1;
+  margin-top:18px;
+}
+.card-left h3{
+  margin:0;
+  font-size:20px;
+}
+.card-left p{
+  margin:4px 0 8px;
+  font-size:14px;
+  color:#bbb;
+}
 
 /* BADGES */
 .badges{
   display:flex;
   gap:6px;
-  flex-wrap:nowrap;
 }
 .badge{
   background:#1c1c1e;
@@ -121,12 +148,19 @@ header img{
   gap:6px;
   z-index:1;
 }
-.price{font-size:15px;font-weight:700}
-.price small{display:block;font-size:11px;color:#bbb}
+.price{
+  font-size:15px;
+  font-weight:700;
+}
+.price small{
+  display:block;
+  font-size:11px;
+  color:#bbb;
+}
 
 .cuotas{
   background:#1c1c1e;
-  padding:5px 10px;
+  padding:6px 10px;
   border-radius:12px;
   font-size:11px;
   cursor:pointer;
@@ -140,7 +174,7 @@ header img{
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:99;
+  z-index:200;
 }
 .modal-content{
   background:#fff;
@@ -159,7 +193,7 @@ header img{
   cursor:pointer;
 }
 
-/* WHATSAPP */
+/* WHATSAPP FLOTANTE */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -169,11 +203,12 @@ header img{
   color:#fff;
   padding:16px 28px;
   border-radius:30px;
-  font-size:18px;
+  font-size:17px;
   display:flex;
   align-items:center;
   gap:10px;
   box-shadow:0 15px 40px rgba(76,194,107,.45);
+  z-index:300;
 }
 </style>
 </head>
@@ -181,7 +216,7 @@ header img{
 <body>
 
 <header>
-  <img src="https://i.imgur.com/Z6X8Z8M.png">
+  <img src="https://i.postimg.cc/prQyms1V/IMG_0127.png">
   <div class="search">
     <i class="fa-solid fa-magnifying-glass"></i>
     <input type="text" placeholder="Buscar modelo o capacidad">
@@ -202,8 +237,9 @@ header img{
 
 <div class="list">
 
-<!-- iPhone 13 Pro -->
+<!-- 13 PRO -->
 <div class="card" data-model="13">
+  <div class="pro-badge">PRO</div>
   <div class="card-left">
     <h3>iPhone 13 Pro</h3>
     <p>128GB · Negro Grafito</p>
@@ -213,28 +249,14 @@ header img{
     </div>
   </div>
   <div class="card-right">
-    <div class="price">USD 470<small>ARS $707.350</small></div>
+    <div class="price">USD 470<small>$707.350</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
 
+<!-- 13 PRO MAX -->
 <div class="card" data-model="13">
-  <div class="card-left">
-    <h3>iPhone 13 Pro</h3>
-    <p>128GB · Sierra Blue</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div>
-      <div class="badge">✔ Verificado</div>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="price">USD 470<small>ARS $707.350</small></div>
-    <div class="cuotas">Ver cuotas</div>
-  </div>
-</div>
-
-<!-- iPhone 13 Pro Max -->
-<div class="card" data-model="13">
+  <div class="pro-badge">PRO MAX</div>
   <div class="card-left">
     <h3>iPhone 13 Pro Max</h3>
     <p>128GB · Negro Grafito</p>
@@ -244,75 +266,14 @@ header img{
     </div>
   </div>
   <div class="card-right">
-    <div class="price">USD 515<small>ARS $775.075</small></div>
+    <div class="price">USD 515<small>$775.075</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
 
-<!-- iPhone 15 -->
-<div class="card" data-model="15">
-  <div class="card-left">
-    <h3>iPhone 15</h3>
-    <p>128GB · Negro</p>
-    <div class="badges">
-      <div class="badge">🔋 91%</div>
-      <div class="badge">✔ Verificado</div>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="price">USD 530<small>ARS $797.650</small></div>
-    <div class="cuotas">Ver cuotas</div>
-  </div>
-</div>
-
-<!-- iPhone 15 Pro Max -->
-<div class="card" data-model="15">
-  <div class="card-left">
-    <h3>iPhone 15 Pro Max</h3>
-    <p>256GB · Negro Titanium</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div>
-      <div class="badge">✔ Verificado</div>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="price">USD 800<small>ARS $1.204.000</small></div>
-    <div class="cuotas">Ver cuotas</div>
-  </div>
-</div>
-
-<div class="card" data-model="15">
-  <div class="card-left">
-    <h3>iPhone 15 Pro Max</h3>
-    <p>256GB · Azul Titanium</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div>
-      <div class="badge">✔ Verificado</div>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="price">USD 800<small>ARS $1.204.000</small></div>
-    <div class="cuotas">Ver cuotas</div>
-  </div>
-</div>
-
-<!-- iPhone 16 -->
+<!-- 16 PRO MAX -->
 <div class="card" data-model="16">
-  <div class="card-left">
-    <h3>iPhone 16</h3>
-    <p>Sellado · Negro</p>
-    <div class="badges">
-      <div class="badge">🔋 100%</div>
-      <div class="badge">✔ Nuevo</div>
-    </div>
-  </div>
-  <div class="card-right">
-    <div class="price">USD 825<small>ARS $1.241.625</small></div>
-    <div class="cuotas">Ver cuotas</div>
-  </div>
-</div>
-
-<div class="card" data-model="16">
+  <div class="pro-badge">PRO MAX</div>
   <div class="card-left">
     <h3>iPhone 16 Pro Max</h3>
     <p>256GB · Negro Titanium</p>
@@ -322,7 +283,7 @@ header img{
     </div>
   </div>
   <div class="card-right">
-    <div class="price">USD 990<small>ARS $1.489.950</small></div>
+    <div class="price">USD 990<small>$1.489.950</small></div>
     <div class="cuotas">Ver cuotas</div>
   </div>
 </div>
