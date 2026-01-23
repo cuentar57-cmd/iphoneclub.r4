@@ -3,184 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo</title>
+<title>Stock disponible</title>
 
 <style>
 :root{
-  --fondo:#f5f5f7;
-  --card:#e6e6eb;
-  --texto:#1c1c1e;
-  --gris:#6e6e73;
   --azul:#007aff;
-  --verde:#34c759;
-  --blanco:#ffffff;
+  --gris-card:#e5e5ea;
+  --gris-texto:#6e6e73;
 }
-
-*{box-sizing:border-box}
 
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:var(--fondo);
-  color:var(--texto);
+  background:#f2f2f7;
+  color:#000;
 }
 
 /* HEADER */
 header{
-  background:var(--blanco);
-  padding:30px 16px 22px;
   text-align:center;
+  padding:24px 16px 10px;
 }
 
 header img{
-  height:110px;
-  margin-bottom:20px;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
-}
-
-.search{
-  background:#ededf0;
-  border-radius:22px;
-  padding:14px 18px;
-  font-size:15px;
-  color:var(--gris);
+  width:90px;
+  margin-bottom:10px;
 }
 
 /* FILTROS */
-.filters{
+.filtros{
   display:flex;
   gap:10px;
-  padding:14px 16px 20px;
-  overflow-x:auto;
+  justify-content:center;
+  margin:10px 0 20px;
 }
 
 .filter{
-  padding:9px 18px;
-  border-radius:20px;
-  background:var(--blanco);
+  padding:8px 16px;
+  border-radius:18px;
   border:1px solid #d1d1d6;
+  background:white;
   font-size:14px;
   cursor:pointer;
-  white-space:nowrap;
 }
 
-/* 👉 AZUL NORMAL, SIN DEGRADADO */
 .filter.active{
   background:var(--azul);
   color:white;
   border:none;
 }
 
-/* LISTADO */
-.list{
-  padding:0 16px 120px;
+/* CONTENEDOR */
+.container{
+  max-width:500px;
+  margin:auto;
+  padding:0 14px 40px;
 }
 
 /* CARD */
 .card{
-  background:var(--card);
-  border-radius:26px;
-  padding:20px;
-  margin-bottom:22px;
-  box-shadow:0 12px 28px rgba(0,0,0,.12);
-  position:relative;
-}
-
-.card h3{
-  margin:0;
-  font-size:20px;
-}
-
-.detalle{
-  font-size:14px;
-  color:var(--gris);
-  margin-top:6px;
-}
-
-.precio{
-  margin-top:10px;
-}
-
-.precio strong{
-  font-size:26px;
-  color:var(--azul);
-}
-
-.info{
+  background:var(--gris-card);
+  border-radius:22px;
+  padding:14px 16px;
+  margin-bottom:14px;
   display:flex;
-  gap:8px;
-  margin-top:14px;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* IZQ */
+.card-left h3{
+  margin:0;
+  font-size:16px;
+}
+
+.card-left p{
+  margin:4px 0 8px;
+  font-size:13px;
+  color:var(--gris-texto);
+}
+
+.badges{
+  display:flex;
+  gap:6px;
   flex-wrap:wrap;
 }
 
-.info span{
-  background:var(--blanco);
-  padding:6px 10px;
-  border-radius:14px;
-  font-size:12px;
+.badges span{
+  font-size:11px;
+  background:#f2f2f7;
+  padding:4px 8px;
+  border-radius:10px;
 }
 
-/* BOTÓN CUOTAS (NO ESTIRA) */
+/* DER */
+.card-right{
+  text-align:right;
+}
+
+.price strong{
+  display:block;
+  font-size:18px;
+}
+
+.price small{
+  font-size:12px;
+  color:var(--gris-texto);
+}
+
 .cuotas-btn{
-  position:absolute;
-  top:18px;
-  right:18px;
-  padding:5px 12px;
+  margin-top:6px;
+  padding:6px 12px;
   border-radius:14px;
   background:var(--azul);
   color:white;
   font-size:12px;
+  border:none;
   cursor:pointer;
 }
 
 /* MODAL */
 .modal{
+  display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.45);
-  display:none;
-  align-items:center;
+  background:rgba(0,0,0,.5);
   justify-content:center;
-  z-index:1000;
+  align-items:center;
 }
-
-.modal.active{display:flex}
 
 .modal-content{
   background:white;
-  border-radius:24px;
+  padding:20px;
+  border-radius:20px;
+  max-width:300px;
   width:90%;
-  max-width:360px;
-  padding:22px;
+  text-align:center;
 }
 
-.plan{
-  background:#f2f2f7;
-  padding:14px;
-  border-radius:16px;
-  margin-bottom:10px;
-  font-size:14px;
+.modal-content h4{
+  margin-top:0;
 }
 
 .close{
-  text-align:right;
-  font-size:20px;
-  cursor:pointer;
-}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  left:16px;
-  right:16px;
-  background:var(--verde);
+  margin-top:14px;
+  background:var(--azul);
   color:white;
-  text-align:center;
-  padding:18px;
-  border-radius:30px;
-  font-size:18px;
-  text-decoration:none;
+  border:none;
+  padding:8px 16px;
+  border-radius:14px;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -188,11 +160,10 @@ header img{
 <body>
 
 <header>
-  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png" alt="Logo">
-  <div class="search">🔍 Buscar producto</div>
+  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png">
 </header>
 
-<div class="filters">
+<div class="filtros">
   <div class="filter active" onclick="filtrar('all',this)">Todos</div>
   <div class="filter" onclick="filtrar('16',this)">iPhone 16</div>
   <div class="filter" onclick="filtrar('16pro',this)">16 Pro</div>
@@ -200,82 +171,114 @@ header img{
   <div class="filter" onclick="filtrar('ps5',this)">PS5</div>
 </div>
 
-<div class="list">
+<div class="container">
 
-<!-- iPhone 16 -->
-<div class="card" data-model="16">
-  <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
-  <h3>iPhone 16</h3>
-  <div class="detalle">128GB • Negro • 100%</div>
-  <div class="precio"><strong>$1.245.750</strong><br>USD 825</div>
-  <div class="info">
-    <span>🔋 100%</span><span>🛡 30 días</span><span>✔ Verificado</span>
+<!-- IPHONE 16 -->
+<div class="card" data-cat="16">
+  <div class="card-left">
+    <h3>iPhone 16</h3>
+    <p>128GB · Negro</p>
+    <div class="badges">
+      <span>🔋 100%</span>
+      <span>🛡 30 días</span>
+      <span>✔ Verificado</span>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">
+      <strong>USD 825</strong>
+      <small>$1.245.750</small>
+    </div>
+    <button class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</button>
   </div>
 </div>
 
-<!-- iPhone 16 Pro -->
-<div class="card" data-model="16pro">
-  <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
-  <h3>iPhone 16 Pro</h3>
-  <div class="detalle">128GB • Blanco Titanium • 90%</div>
-  <div class="precio"><strong>$1.208.000</strong><br>USD 800</div>
-  <div class="info">
-    <span>🔋 90%</span><span>🛡 30 días</span><span>✔ Verificado</span>
+<!-- IPHONE 16 PRO -->
+<div class="card" data-cat="16pro">
+  <div class="card-left">
+    <h3>iPhone 16 Pro</h3>
+    <p>128GB · Blanco Titanium</p>
+    <div class="badges">
+      <span>🔋 90%</span>
+      <span>🛡 30 días</span>
+      <span>✔ Verificado</span>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">
+      <strong>USD 800</strong>
+      <small>$1.208.000</small>
+    </div>
+    <button class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</button>
   </div>
 </div>
 
-<!-- iPhone 16 Pro Max -->
-<div class="card" data-model="16promax">
-  <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
-  <h3>iPhone 16 Pro Max</h3>
-  <div class="detalle">Negro Titanium</div>
-  <div class="precio"><strong>$1.494.000</strong><br>USD 990</div>
-  <div class="info">
-    <span>🛡 30 días</span><span>✔ Verificado</span>
+<!-- IPHONE 16 PRO MAX -->
+<div class="card" data-cat="16promax">
+  <div class="card-left">
+    <h3>iPhone 16 Pro Max</h3>
+    <p>Negro Titanium</p>
+    <div class="badges">
+      <span>🔋 100%</span>
+      <span>🛡 30 días</span>
+      <span>✔ Verificado</span>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">
+      <strong>USD 990</strong>
+      <small>$1.494.000</small>
+    </div>
+    <button class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</button>
   </div>
 </div>
 
 <!-- PS5 -->
-<div class="card" data-model="ps5">
-  <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
-  <h3>PlayStation 5</h3>
-  <div class="detalle">Nueva</div>
-  <div class="precio"><strong>$883.335</strong><br>USD 585</div>
-  <div class="info">
-    <span>🛡 30 días</span>
+<div class="card" data-cat="ps5">
+  <div class="card-left">
+    <h3>PlayStation 5</h3>
+    <p>Edición estándar</p>
+    <div class="badges">
+      <span>✔ Nueva</span>
+      <span>🛡 Garantía</span>
+    </div>
+  </div>
+  <div class="card-right">
+    <div class="price">
+      <strong>USD 585</strong>
+      <small>$883.335</small>
+    </div>
+    <button class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</button>
   </div>
 </div>
 
 </div>
 
-<a class="whatsapp" href="#">Consultar por WhatsApp</a>
-
-<!-- MODAL CUOTAS -->
-<div class="modal" id="modalCuotas" onclick="cerrarCuotas(event)">
+<!-- MODAL -->
+<div class="modal" id="modal">
   <div class="modal-content">
-    <div class="close" onclick="cerrarCuotas()">✕</div>
-    <h3>Planes de pago</h3>
-    <div class="plan">💳 3 cuotas sin interés</div>
-    <div class="plan">💳 6 cuotas fijas</div>
-    <div class="plan">💳 12 cuotas</div>
+    <h4>Planes de pago</h4>
+    <p>3 cuotas sin interés<br>6 y 12 cuotas con recargo</p>
+    <button class="close" onclick="cerrarCuotas()">Cerrar</button>
   </div>
 </div>
 
 <script>
-function abrirCuotas(){
-  document.getElementById('modalCuotas').classList.add('active');
-}
-function cerrarCuotas(e){
-  if(!e || e.target.id==='modalCuotas'){
-    document.getElementById('modalCuotas').classList.remove('active');
-  }
-}
-function filtrar(tipo,btn){
-  document.querySelectorAll('.filter').forEach(f=>f.classList.remove('active'));
+function filtrar(cat,btn){
+  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.card').forEach(c=>{
-    c.style.display = (tipo==='all'||c.dataset.model===tipo)?'block':'none';
+
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display = (cat==='all'||card.dataset.cat===cat) ? 'flex' : 'none';
   });
+}
+
+function abrirCuotas(){
+  document.getElementById('modal').style.display='flex';
+}
+
+function cerrarCuotas(){
+  document.getElementById('modal').style.display='none';
 }
 </script>
 
