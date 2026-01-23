@@ -68,6 +68,7 @@ header{
   border:1px solid #ddd;
   font-weight:600;
   white-space:nowrap;
+  cursor:pointer;
 }
 .filter.active{
   background:linear-gradient(135deg,#007aff,#5ac8fa);
@@ -114,9 +115,7 @@ header{
 .card:hover::before{left:140%}
 
 /* IZQUIERDA */
-.card-left{
-  max-width:68%;
-}
+.card-left{max-width:70%}
 
 .card-left h3{
   margin:0;
@@ -129,7 +128,7 @@ header{
   font-size:14px;
 }
 
-/* BADGES EN UNA SOLA LINEA */
+/* BADGES */
 .badges{
   display:flex;
   gap:8px;
@@ -156,15 +155,16 @@ header{
   flex-shrink:0;
 }
 
+/* PRECIO MÁS CHICO */
 .price{
-  font-size:24px;
+  font-size:20px;
   font-weight:700;
   line-height:1.1;
 }
 
 .price small{
   display:block;
-  font-size:13px;
+  font-size:12px;
   color:#b3b3b3;
   margin-top:2px;
 }
@@ -216,24 +216,22 @@ header{
   <p>Equipos verificados • Garantía</p>
 
   <div class="filters">
-    <div class="filter active">Todos</div>
-    <div class="filter">iPhone 16</div>
-    <div class="filter">16 Pro</div>
-    <div class="filter">16 Pro Max</div>
-    <div class="filter">PS5</div>
+    <div class="filter active" onclick="filtrar('all',this)">Todos</div>
+    <div class="filter" onclick="filtrar('16',this)">iPhone 16</div>
+    <div class="filter" onclick="filtrar('16pro',this)">16 Pro</div>
+    <div class="filter" onclick="filtrar('16pm',this)">16 Pro Max</div>
+    <div class="filter" onclick="filtrar('ps5',this)">PS5</div>
   </div>
 </section>
 
 <section class="list">
 
-<div class="card">
+<div class="card" data-cat="16">
   <div class="card-left">
     <h3>iPhone 16</h3>
     <p>128GB • Negro</p>
     <div class="badges">
-      <span>🔋 100%</span>
-      <span>🛡️ 30 días</span>
-      <span>✔ Verificado</span>
+      <span>🔋 100%</span><span>🛡️ 30 días</span><span>✔ Verificado</span>
     </div>
   </div>
   <div class="card-right">
@@ -242,14 +240,12 @@ header{
   </div>
 </div>
 
-<div class="card">
+<div class="card" data-cat="16pro">
   <div class="card-left">
     <h3>iPhone 16 Pro</h3>
     <p>128GB • Blanco Titanium</p>
     <div class="badges">
-      <span>🔋 90%</span>
-      <span>🛡️ 30 días</span>
-      <span>✔ Verificado</span>
+      <span>🔋 90%</span><span>🛡️ 30 días</span><span>✔ Verificado</span>
     </div>
   </div>
   <div class="card-right">
@@ -258,14 +254,12 @@ header{
   </div>
 </div>
 
-<div class="card">
+<div class="card" data-cat="16pm">
   <div class="card-left">
     <h3>iPhone 16 Pro Max</h3>
     <p>Negro Titanium</p>
     <div class="badges">
-      <span>🔋 100%</span>
-      <span>🛡️ 30 días</span>
-      <span>✔ Verificado</span>
+      <span>🔋 100%</span><span>🛡️ 30 días</span><span>✔ Verificado</span>
     </div>
   </div>
   <div class="card-right">
@@ -274,13 +268,12 @@ header{
   </div>
 </div>
 
-<div class="card">
+<div class="card" data-cat="ps5">
   <div class="card-left">
     <h3>PlayStation 5</h3>
     <p>Edición estándar</p>
     <div class="badges">
-      <span>✔ Nueva</span>
-      <span>🛡️ Garantía</span>
+      <span>✔ Nueva</span><span>🛡️ Garantía</span>
     </div>
   </div>
   <div class="card-right">
@@ -295,6 +288,18 @@ header{
   <i class="fa-brands fa-whatsapp"></i>
   Consultar por WhatsApp
 </a>
+
+<script>
+function filtrar(cat,el){
+  document.querySelectorAll('.filter').forEach(f=>f.classList.remove('active'));
+  el.classList.add('active');
+
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display =
+      (cat==='all' || card.dataset.cat===cat) ? 'flex' : 'none';
+  });
+}
+</script>
 
 </body>
 </html>
