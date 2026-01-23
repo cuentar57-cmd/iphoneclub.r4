@@ -35,7 +35,7 @@ header{
 .search{
   background:#f1f1f3;
   border-radius:18px;
-  padding:12px 16px;
+  padding:14px 18px;
   display:flex;
   align-items:center;
   gap:10px;
@@ -44,26 +44,26 @@ header{
 
 /* TITULOS */
 .section{
-  padding:20px 16px 10px;
+  padding:22px 16px 10px;
 }
 .section h1{
   margin:0;
   font-size:26px;
 }
 .section p{
-  margin:4px 0 12px;
+  margin:6px 0 14px;
   color:#777;
 }
 
 /* FILTROS */
 .filters{
   display:flex;
-  gap:10px;
+  gap:12px;
   overflow-x:auto;
 }
 .filter{
-  padding:10px 18px;
-  border-radius:22px;
+  padding:11px 20px;
+  border-radius:24px;
   background:#fff;
   border:1px solid #ddd;
   font-weight:600;
@@ -78,22 +78,22 @@ header{
 
 /* LISTA */
 .list{
-  padding:0 16px 120px;
+  padding:0 16px 130px;
 }
 
 /* CARD */
 .card{
   background:#0b0b0c;
-  border-radius:22px;
-  padding:14px 16px;
-  margin-bottom:14px;
+  border-radius:26px;
+  padding:20px 20px;
+  margin-bottom:16px;
   display:flex;
   justify-content:space-between;
-  align-items:center; /* CLAVE */
+  align-items:center;
   position:relative;
   overflow:hidden;
   color:white;
-  height:110px; /* ALTURA FIJA */
+  min-height:145px; /* IMPORTANTE */
 }
 
 /* EFECTO BLANCO INTERNO */
@@ -101,8 +101,8 @@ header{
   content:"";
   position:absolute;
   top:0;
-  left:-100%;
-  width:60%;
+  left:-130%;
+  width:65%;
   height:100%;
   background:linear-gradient(
     120deg,
@@ -110,7 +110,7 @@ header{
     rgba(255,255,255,.18),
     transparent
   );
-  transition:all .6s ease;
+  transition:all .7s ease;
 }
 
 .card:hover::before,
@@ -121,23 +121,29 @@ header{
 /* IZQUIERDA */
 .card-left h3{
   margin:0;
-  font-size:18px;
+  font-size:20px;
 }
 .card-left p{
-  margin:4px 0 8px;
+  margin:6px 0 12px;
   color:#b3b3b3;
   font-size:14px;
 }
 
 .badges{
   display:flex;
-  gap:6px;
+  gap:8px;
+  flex-wrap:wrap;
 }
+
 .badges span{
   background:#1c1c1e;
-  padding:5px 9px;
-  border-radius:12px;
-  font-size:11px;
+  padding:8px 14px;
+  border-radius:16px;
+  font-size:12px;
+  white-space:nowrap;
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 
 /* DERECHA */
@@ -145,22 +151,25 @@ header{
   text-align:right;
   flex-shrink:0;
 }
+
 .price{
-  font-size:22px;
+  font-size:24px;
   font-weight:700;
 }
+
 .price small{
   display:block;
-  font-size:12px;
+  font-size:13px;
   color:#b3b3b3;
+  margin-top:4px;
 }
 
 .cuotas{
-  margin-top:6px;
+  margin-top:10px;
   background:#1c1c1e;
-  border-radius:14px;
-  padding:5px 10px;
-  font-size:11px;
+  border-radius:18px;
+  padding:8px 16px;
+  font-size:12px;
 }
 
 /* WHATSAPP */
@@ -171,8 +180,8 @@ header{
   transform:translateX(-50%);
   background:#45c17c;
   color:white;
-  padding:14px 26px;
-  border-radius:30px;
+  padding:15px 30px;
+  border-radius:34px;
   font-size:16px;
   font-weight:600;
   display:flex;
@@ -202,22 +211,24 @@ header{
   <p>Equipos verificados • Garantía</p>
 
   <div class="filters">
-    <div class="filter active" onclick="filtrar('all')">Todos</div>
-    <div class="filter" onclick="filtrar('16')">iPhone 16</div>
-    <div class="filter" onclick="filtrar('16pro')">16 Pro</div>
-    <div class="filter" onclick="filtrar('16pm')">16 Pro Max</div>
-    <div class="filter" onclick="filtrar('ps5')">PS5</div>
+    <div class="filter active">Todos</div>
+    <div class="filter">iPhone 16</div>
+    <div class="filter">16 Pro</div>
+    <div class="filter">16 Pro Max</div>
+    <div class="filter">PS5</div>
   </div>
 </section>
 
 <section class="list">
 
-<div class="card" data-cat="16">
+<div class="card">
   <div class="card-left">
     <h3>iPhone 16</h3>
     <p>128GB • Negro</p>
     <div class="badges">
-      <span>🔋 100%</span><span>🛡️ 30 días</span><span>✔ Verificado</span>
+      <span>🔋 100%</span>
+      <span>🛡️ 30 días</span>
+      <span>✔ Verificado</span>
     </div>
   </div>
   <div class="card-right">
@@ -226,12 +237,14 @@ header{
   </div>
 </div>
 
-<div class="card" data-cat="16pro">
+<div class="card">
   <div class="card-left">
     <h3>iPhone 16 Pro</h3>
     <p>128GB • Blanco Titanium</p>
     <div class="badges">
-      <span>🔋 90%</span><span>🛡️ 30 días</span><span>✔ Verificado</span>
+      <span>🔋 90%</span>
+      <span>🛡️ 30 días</span>
+      <span>✔ Verificado</span>
     </div>
   </div>
   <div class="card-right">
@@ -240,12 +253,14 @@ header{
   </div>
 </div>
 
-<div class="card" data-cat="16pm">
+<div class="card">
   <div class="card-left">
     <h3>iPhone 16 Pro Max</h3>
     <p>Negro Titanium</p>
     <div class="badges">
-      <span>🔋 100%</span><span>🛡️ 30 días</span><span>✔ Verificado</span>
+      <span>🔋 100%</span>
+      <span>🛡️ 30 días</span>
+      <span>✔ Verificado</span>
     </div>
   </div>
   <div class="card-right">
@@ -254,12 +269,13 @@ header{
   </div>
 </div>
 
-<div class="card" data-cat="ps5">
+<div class="card">
   <div class="card-left">
     <h3>PlayStation 5</h3>
     <p>Edición estándar</p>
     <div class="badges">
-      <span>✔ Nueva</span><span>🛡️ Garantía</span>
+      <span>✔ Nueva</span>
+      <span>🛡️ Garantía</span>
     </div>
   </div>
   <div class="card-right">
@@ -274,17 +290,6 @@ header{
   <i class="fa-brands fa-whatsapp"></i>
   Consultar por WhatsApp
 </a>
-
-<script>
-function filtrar(cat){
-  document.querySelectorAll('.filter').forEach(f=>f.classList.remove('active'));
-  event.target.classList.add('active');
-
-  document.querySelectorAll('.card').forEach(c=>{
-    c.style.display = (cat==='all'||c.dataset.cat===cat) ? 'flex' : 'none';
-  });
-}
-</script>
 
 </body>
 </html>
