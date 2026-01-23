@@ -8,12 +8,11 @@
 <style>
 :root{
   --fondo:#f5f5f7;
-  --gris-card:#e5e5ea;
-  --gris-texto:#6e6e73;
-  --negro:#1c1c1e;
+  --card:#e6e6eb;          /* gris clarito */
+  --texto:#1c1c1e;
+  --gris:#6e6e73;
   --azul:#007aff;
   --verde:#34c759;
-  --borde:#d1d1d6;
   --blanco:#ffffff;
 }
 
@@ -23,19 +22,19 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:var(--fondo);
-  color:var(--negro);
+  color:var(--texto);
 }
 
 /* HEADER */
 header{
   background:var(--blanco);
-  padding:28px 16px 24px;
+  padding:30px 16px 22px;
   text-align:center;
 }
 
 header img{
   height:110px;
-  margin-bottom:22px;
+  margin-bottom:20px;
   filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
 }
 
@@ -44,49 +43,31 @@ header img{
   border-radius:22px;
   padding:14px 18px;
   font-size:15px;
-  color:var(--gris-texto);
-}
-
-/* TITULO */
-.section{
-  padding:26px 18px 10px;
-}
-
-.section h2{
-  margin:0;
-  font-size:28px;
-}
-
-.section p{
-  margin-top:6px;
-  color:var(--gris-texto);
-  font-size:15px;
+  color:var(--gris);
 }
 
 /* FILTROS */
 .filters{
   display:flex;
   gap:10px;
-  padding:10px 16px 20px;
+  padding:14px 16px 20px;
   overflow-x:auto;
 }
 
 .filter{
-  padding:10px 18px;
-  border-radius:22px;
-  border:1px solid var(--borde);
+  padding:9px 18px;
+  border-radius:20px;
   background:var(--blanco);
+  border:1px solid #d1d1d6;
   font-size:14px;
   cursor:pointer;
   white-space:nowrap;
 }
 
-/* 🔵 DEGRADADO FORZADO */
 .filter.active{
-  background:linear-gradient(135deg,#007aff,#4da3ff) !important;
-  color:white !important;
-  border:none !important;
-  box-shadow:0 6px 14px rgba(0,122,255,.35);
+  background:linear-gradient(135deg,#007aff,#4da3ff);
+  color:white;
+  border:none;
 }
 
 /* LISTADO */
@@ -96,31 +77,26 @@ header img{
 
 /* CARD */
 .card{
-  background:var(--gris-card);
+  background:var(--card);
   border-radius:26px;
   padding:20px;
   margin-bottom:22px;
-  box-shadow:0 12px 30px rgba(0,0,0,.12);
-}
-
-.card-top{
-  display:flex;
-  justify-content:space-between;
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
 }
 
 .card h3{
   margin:0;
-  font-size:22px;
+  font-size:20px;
 }
 
 .detalle{
+  font-size:14px;
+  color:var(--gris);
   margin-top:6px;
-  color:var(--gris-texto);
-  font-size:15px;
 }
 
 .precio{
-  text-align:right;
+  margin-top:10px;
 }
 
 .precio strong{
@@ -128,27 +104,72 @@ header img{
   color:var(--azul);
 }
 
-.precio span{
-  display:block;
-  font-size:14px;
-  color:var(--gris-texto);
-}
-
-/* INFO */
 .info{
   display:flex;
-  gap:12px;
+  gap:8px;
   margin-top:14px;
+  flex-wrap:wrap;
 }
 
 .info span{
-  display:flex;
-  align-items:center;
-  gap:6px;
   background:var(--blanco);
   padding:6px 10px;
   border-radius:14px;
+  font-size:12px;
+}
+
+/* BOTÓN CUOTAS (CHICO Y VISIBLE) */
+.cuotas-btn{
+  margin-top:14px;
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:14px;
+  background:#007aff;
+  color:white;
   font-size:13px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+
+.modal.active{
+  display:flex;
+}
+
+.modal-content{
+  background:white;
+  border-radius:24px;
+  width:90%;
+  max-width:360px;
+  padding:22px;
+}
+
+.modal-content h3{
+  margin-top:0;
+}
+
+.plan{
+  background:#f2f2f7;
+  padding:14px;
+  border-radius:16px;
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+.close{
+  text-align:right;
+  font-size:20px;
+  cursor:pointer;
 }
 
 /* WHATSAPP */
@@ -163,9 +184,7 @@ header img{
   padding:18px;
   border-radius:30px;
   font-size:18px;
-  font-weight:600;
   text-decoration:none;
-  box-shadow:0 14px 30px rgba(52,199,89,.45);
 }
 </style>
 </head>
@@ -173,123 +192,82 @@ header img{
 <body>
 
 <header>
-  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png">
+  <img src="https://i.postimg.cc/prQyms1V/IMG-0127.png" alt="Logo">
   <div class="search">🔍 Buscar producto</div>
 </header>
 
-<div class="section">
-  <h2>Stock disponible</h2>
-  <p>Productos verificados • Garantía</p>
-</div>
-
-<!-- FILTROS -->
 <div class="filters">
-  <div class="filter active" data-filter="all">Todos</div>
-  <div class="filter" data-filter="16">iPhone 16</div>
-  <div class="filter" data-filter="16-pro">16 Pro</div>
-  <div class="filter" data-filter="16-pro-max">16 Pro Max</div>
-  <div class="filter" data-filter="ps5">PS5</div>
+  <div class="filter active" onclick="filtrar('all')">Todos</div>
+  <div class="filter" onclick="filtrar('16')">iPhone 16</div>
+  <div class="filter" onclick="filtrar('ps5')">PS5</div>
 </div>
 
 <div class="list">
 
+  <!-- IPHONE 16 -->
   <div class="card" data-model="16">
-    <div class="card-top">
-      <div>
-        <h3>iPhone 16</h3>
-        <div class="detalle">128GB • Negro</div>
-      </div>
-      <div class="precio">
-        <strong>USD 825</strong>
-        <span>ARS $1.245.750</span>
-      </div>
-    </div>
+    <h3>iPhone 16</h3>
+    <div class="detalle">128GB • Negro • 100%</div>
+    <div class="precio"><strong>USD 825</strong></div>
     <div class="info">
-      <span>🔋 100%</span>
+      <span>🔋 Batería 100%</span>
       <span>🛡 30 días</span>
       <span>✔ Verificado</span>
     </div>
+    <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
   </div>
 
-  <div class="card" data-model="16-pro">
-    <div class="card-top">
-      <div>
-        <h3>iPhone 16 Pro</h3>
-        <div class="detalle">128GB • Blanco Titanium</div>
-      </div>
-      <div class="precio">
-        <strong>USD 800</strong>
-        <span>ARS $1.208.000</span>
-      </div>
-    </div>
-    <div class="info">
-      <span>🔋 90%</span>
-      <span>🛡 30 días</span>
-      <span>✔ Verificado</span>
-    </div>
-  </div>
-
-  <div class="card" data-model="16-pro-max">
-    <div class="card-top">
-      <div>
-        <h3>iPhone 16 Pro Max</h3>
-        <div class="detalle">Negro Titanium</div>
-      </div>
-      <div class="precio">
-        <strong>USD 990</strong>
-        <span>ARS $1.494.000</span>
-      </div>
-    </div>
-    <div class="info">
-      <span>🛡 30 días</span>
-      <span>✔ Verificado</span>
-    </div>
-  </div>
-
-  <!-- ✅ PS5 AHORA SÍ -->
+  <!-- PS5 -->
   <div class="card" data-model="ps5">
-    <div class="card-top">
-      <div>
-        <h3>PlayStation 5</h3>
-        <div class="detalle">Consola • Nueva</div>
-      </div>
-      <div class="precio">
-        <strong>USD 585</strong>
-        <span>ARS $883.335</span>
-      </div>
-    </div>
+    <h3>PlayStation 5</h3>
+    <div class="detalle">Nueva</div>
+    <div class="precio"><strong>USD 585</strong></div>
     <div class="info">
       <span>🛡 30 días</span>
-      <span>✔ Verificado</span>
     </div>
+    <div class="cuotas-btn" onclick="abrirCuotas()">Ver cuotas</div>
   </div>
 
 </div>
 
-<a class="whatsapp" href="https://wa.me/549XXXXXXXXXX">
-  Consultar por WhatsApp
-</a>
+<a class="whatsapp" href="#">Consultar por WhatsApp</a>
+
+<!-- MODAL CUOTAS -->
+<div class="modal" id="modalCuotas" onclick="cerrarCuotas(event)">
+  <div class="modal-content">
+    <div class="close" onclick="cerrarCuotas()">✕</div>
+    <h3>Planes de pago</h3>
+
+    <div class="plan">💳 3 cuotas sin interés</div>
+    <div class="plan">💳 6 cuotas fijas</div>
+    <div class="plan">💳 12 cuotas con interés</div>
+
+    <small>* Consultar tarjetas y bancos</small>
+  </div>
+</div>
 
 <script>
-const filters = document.querySelectorAll('.filter');
-const cards = document.querySelectorAll('.card');
+function abrirCuotas(){
+  document.getElementById('modalCuotas').classList.add('active');
+}
 
-filters.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    filters.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
+function cerrarCuotas(e){
+  if(!e || e.target.id === 'modalCuotas'){
+    document.getElementById('modalCuotas').classList.remove('active');
+  }
+}
 
-    const filtro = btn.dataset.filter;
+function filtrar(tipo){
+  document.querySelectorAll('.filter').forEach(f=>f.classList.remove('active'));
+  event.target.classList.add('active');
 
-    cards.forEach(card=>{
-      if (filtro === 'all' || card.dataset.model === filtro) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display =
+      (tipo === 'all' || card.dataset.model === tipo)
+      ? 'block'
+      : 'none';
   });
-});
+}
 </script>
 
 </body>
