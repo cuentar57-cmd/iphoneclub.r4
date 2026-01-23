@@ -13,7 +13,6 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:#f2f2f7;
-  color:#000;
 }
 
 /* HEADER */
@@ -21,39 +20,26 @@ header{
   padding:20px;
   text-align:center;
 }
-header img{
-  width:70px;
-  margin-bottom:12px;
-}
+header img{width:70px;margin-bottom:12px}
+
 .search{
   background:#e9e9ec;
   border-radius:20px;
   padding:14px 18px;
   display:flex;
-  align-items:center;
   gap:10px;
-  color:#777;
 }
 .search input{
   border:none;
   background:none;
   outline:none;
   width:100%;
-  font-size:15px;
 }
 
 /* TITULO */
-.section{
-  padding:20px;
-}
-.title{
-  font-size:28px;
-  font-weight:800;
-}
-.subtitle{
-  color:#777;
-  margin-top:4px;
-}
+.section{padding:20px}
+.title{font-size:28px;font-weight:800}
+.subtitle{color:#777}
 
 /* FILTROS */
 .filters{
@@ -68,7 +54,6 @@ header img{
   background:#fff;
   border:1px solid #ddd;
   white-space:nowrap;
-  cursor:pointer;
 }
 .filter.active{
   background:#007aff;
@@ -76,23 +61,22 @@ header img{
   border:none;
 }
 
-/* CARDS */
-.list{
-  padding:0 16px 120px;
-}
+/* LISTA */
+.list{padding:0 16px 120px}
 
+/* CARD */
 .card{
   background:#000;
   color:#fff;
   border-radius:26px;
-  padding:16px;
+  padding:14px 16px;
   margin-bottom:14px;
   display:flex;
   justify-content:space-between;
-  gap:12px;
-  position:relative;
-  width:100%;
+  align-items:flex-start;
+  gap:10px;
   overflow:hidden;
+  position:relative;
 }
 
 .card::after{
@@ -104,42 +88,40 @@ header img{
   pointer-events:none;
 }
 
-.card-left,
-.card-right{
-  position:relative;
-  z-index:1;
-}
-
 /* IZQUIERDA */
+.card-left{z-index:1;max-width:60%}
 .card-left h3{
   margin:0;
   font-size:20px;
 }
 .card-left p{
-  margin:4px 0 10px;
-  color:#bbb;
+  margin:4px 0 8px;
   font-size:14px;
+  color:#bbb;
 }
 
+/* BADGES */
 .badges{
   display:flex;
-  gap:8px;
+  gap:6px;
+  flex-wrap:nowrap;
 }
 .badge{
   background:#1c1c1e;
-  padding:6px 10px;
-  border-radius:14px;
-  font-size:12px;
+  padding:5px 8px;
+  border-radius:12px;
+  font-size:11px;
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
+  line-height:1;
   white-space:nowrap;
 }
 
 /* DERECHA */
 .card-right{
-  min-width:120px;
-  max-width:120px;
+  z-index:1;
+  width:120px;
   display:flex;
   flex-direction:column;
   align-items:flex-end;
@@ -148,7 +130,7 @@ header img{
 }
 
 .price{
-  font-size:17px;
+  font-size:16px;
   font-weight:700;
   line-height:1.1;
 }
@@ -160,8 +142,8 @@ header img{
 
 .cuotas{
   background:#1c1c1e;
-  padding:6px 10px;
-  border-radius:14px;
+  padding:5px 10px;
+  border-radius:12px;
   font-size:11px;
   white-space:nowrap;
 }
@@ -209,6 +191,7 @@ header img{
 
 <div class="list">
 
+  <!-- iPhone 16 -->
   <div class="card" data-model="16">
     <div class="card-left">
       <h3>iPhone 16</h3>
@@ -225,6 +208,7 @@ header img{
     </div>
   </div>
 
+  <!-- iPhone 16 Pro -->
   <div class="card" data-model="16pro">
     <div class="card-left">
       <h3>iPhone 16 Pro</h3>
@@ -249,19 +233,15 @@ header img{
 </div>
 
 <script>
-const filters=document.querySelectorAll('.filter');
-const cards=document.querySelectorAll('.card');
-
-filters.forEach(f=>{
-  f.addEventListener('click',()=>{
-    filters.forEach(x=>x.classList.remove('active'));
-    f.classList.add('active');
-    const type=f.dataset.filter;
-
-    cards.forEach(c=>{
-      c.style.display=(type==='all'||c.dataset.model===type)?'flex':'none';
+document.querySelectorAll('.filter').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.card').forEach(c=>{
+      c.style.display=(f==='all'||c.dataset.model===f)?'flex':'none';
     });
-  });
+  }
 });
 </script>
 
