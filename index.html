@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo</title>
+<title>Stock iPhone</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -12,306 +12,520 @@
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#f2f2f7;
+  background:#f4f6fb;
 }
 
 /* HEADER */
 header{
+  background:#fff;
+  padding:16px;
   text-align:center;
-  padding:26px 16px 10px;
 }
-header img{
-  width:190px;
+header img{width:180px}
+
+/* BUSCADOR */
+.search{padding:12px 16px}
+.search input{
+  width:100%;
+  padding:14px 18px;
+  border-radius:30px;
+  border:none;
+  background:#f0f0f5;
+}
+
+/* TITULO */
+.title{
+  padding:16px;
+  background:linear-gradient(135deg,#e8f0ff,#ffffff);
 }
 
 /* FILTROS */
 .filters{
   display:flex;
-  gap:12px;
+  gap:10px;
   overflow-x:auto;
-  padding:14px 16px;
+  padding:12px 16px;
+  background:#fff;
 }
 .filter{
-  flex-shrink:0;
-  padding:10px 18px;
-  border-radius:22px;
-  font-size:14px;
-  font-weight:700;
-  color:#fff;
-  background:linear-gradient(135deg,#007aff,#00c6ff);
-  border:none;
+  padding:8px 16px;
+  border-radius:20px;
+  border:1px solid #ddd;
+  background:#fff;
   cursor:pointer;
+  transition:.25s;
+}
+.filter.active{
+  background:linear-gradient(135deg,#007aff,#00c6ff);
+  color:#fff;
+  border:none;
 }
 
 /* LISTA */
-.list{
-  padding:10px 16px 130px;
-}
+.list{padding:10px 16px 140px}
 
 /* CARD */
 .card{
-  background:#000;
-  border-radius:26px;
+  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+  border-radius:18px;
   padding:14px 16px;
-  margin-bottom:14px;
+  margin-bottom:12px;
   display:flex;
   justify-content:space-between;
-  gap:10px;
   color:#fff;
-  position:relative;
-  overflow:hidden;
-}
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,rgba(255,255,255,.14),transparent 60%);
-}
-
-.card-left{max-width:65%}
-.card-left h3{margin:0;font-size:16px}
-.card-left p{
-  margin:4px 0 8px;
-  font-size:13px;
-  color:#b3b3b3;
 }
 
 /* BADGES */
-.badges{
-  display:flex;
-  gap:6px;
-  white-space:nowrap;
-}
+.badges{display:flex;gap:6px;margin-top:6px}
 .badge{
-  background:#1c1c1e;
+  background:#2a2a2a;
   padding:4px 8px;
-  border-radius:12px;
+  border-radius:10px;
   font-size:11px;
+}
+.filter{
+  position: relative;
+  overflow: hidden;
+  transition: all .25s ease;
 }
 
-/* DERECHA */
-.card-right{
-  text-align:right;
-  min-width:115px;
+/* animación al tocar */
+.filter:active{
+  transform: scale(0.95);
 }
-.price{
-  font-size:13px;
-  font-weight:700;
+
+/* animación al quedar seleccionado */
+.filter.active{
+  background: linear-gradient(135deg,#007aff,#00c6ff);
+  color:#fff;
+  border:none;
+  animation: selectFilter .35s ease;
 }
-.price small{
-  display:block;
-  font-size:11px;
-  color:#b3b3b3;
+
+/* keyframes */
+@keyframes selectFilter{
+  0%{
+    transform: scale(0.9);
+    box-shadow: 0 0 0 rgba(0,122,255,0);
+  }
+  60%{
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,122,255,.35);
+  }
+  100%{
+    transform: scale(1);
+    box-shadow: 0 6px 16px rgba(0,122,255,.25);
+  }
 }
+
+/* PRECIOS */
+.card-right{text-align:right}
 .cuotas{
   margin-top:6px;
-  background:#1c1c1e;
+  background:#2a2a2a;
   padding:6px 10px;
   border-radius:12px;
-  font-size:11px;
   cursor:pointer;
 }
 
 /* WHATSAPP */
-.whatsapp{
+.whatsapp-float{
   position:fixed;
-  bottom:18px;
+  bottom:22px;
   left:50%;
   transform:translateX(-50%);
-  background:#4cc26b;
+  background:#25d366;
   color:#fff;
   padding:14px 26px;
   border-radius:30px;
   font-size:16px;
+  font-weight:600;
   display:flex;
   gap:10px;
   align-items:center;
-  box-shadow:0 15px 40px rgba(76,194,107,.45);
+  box-shadow:0 15px 35px rgba(37,211,102,.45);
+  text-decoration:none;
+  z-index:9999;
+}
+@media(min-width:768px){
+  .whatsapp-float{
+    left:auto;
+    right:26px;
+    transform:none;
+  }
 }
 
-/* MODAL CUOTAS */
+/* MODAL */
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.55);
+  background:rgba(0,0,0,.6);
   display:none;
   align-items:center;
   justify-content:center;
+  z-index:10000;
 }
 .modal-box{
-  background:#fff;
-  border-radius:22px;
+  background:#111;
+  color:#fff;
   padding:22px;
-  width:85%;
+  border-radius:22px;
+  width:90%;
   max-width:320px;
   text-align:center;
 }
-.modal-box h3{
-  margin-top:0;
-}
 .modal-box button{
-  margin-top:16px;
+  margin-top:14px;
   padding:10px 18px;
   border:none;
   border-radius:20px;
   background:#007aff;
   color:#fff;
-  font-weight:600;
 }
+/* BOTÓN MENÚ */
+.menu-btn{
+  position:fixed;
+  top:18px;
+  right:18px;
+  width:34px;
+  height:26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:100001;
+}
+.menu-btn span{
+  height:4px;
+  width:100%;
+  background:linear-gradient(90deg,#007aff,#00c6ff);
+  border-radius:4px;
+}
+
+/* MENÚ LATERAL */
+.menu-lateral{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  z-index:100000;
+}
+.menu-contenido{
+  background:#111;
+  width:260px;
+  height:100%;
+  padding:22px;
+  color:#fff;
+  animation: slide .25s ease;
+}
+@keyframes slide{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(0)}
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="menu-btn" onclick="abrirMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+<div class="menu-lateral" id="menu">
+  <div class="menu-contenido">
+
+    <h3>SERVICIOS</h3>
+    <p>♻️ Plan canje (tomamos tu usado)</p>
+    <p>📦 Envíos a todo el país</p>
+
+    <h3>CONFIANZA</h3>
+    <p>✅ Equipos verificados</p>
+    <p>🛡️ Garantía real de 30 días</p>
+
+    <h3>UBICACIÓN</h3>
+    <a
+      href="https://maps.app.goo.gl/w2vQChxCbvfQqJ3v5"
+      class="menu-link"
+      target="_blank"
+    >
+      📍 Fray Quirico Porreca 740 – Río Cuarto
+    </a>
+
+    <h3>SEGUINOS</h3>
+    <a href="https://www.instagram.com/iphoneclub.r4/" target="_blank">
+      📸 Instagram
+    </a>
+
+  </div>
+</div>
+
 <header>
   <img src="https://i.postimg.cc/prQyms1V/IMG_0127.png">
 </header>
 
-<!-- FILTROS -->
+<div class="search">
+  <input type="text" placeholder="Buscar modelo o capacidad">
+</div>
+
+<div class="title">
+  <h2>Stock disponible</h2>
+  <p>Equipos verificados · Garantía</p>
+</div>
+
 <div class="filters">
-  <button class="filter" onclick="mostrarTodos()">Todos</button>
-  <button class="filter" onclick="filtrar('13pro')">13 Pro</button>
-  <button class="filter" onclick="filtrar('13promax')">13 Pro Max</button>
-  <button class="filter" onclick="filtrar('15')">iPhone 15</button>
-  <button class="filter" onclick="filtrar('15promax')">15 Pro Max</button>
-  <button class="filter" onclick="filtrar('16')">iPhone 16</button>
-  <button class="filter" onclick="filtrar('16promax')">16 Pro Max</button>
+  <button class="filter" onclick="filtrar('Sellados',this)">Sellados</button>
+  <button class="filter active" onclick="filtrar('all',this)">Todos</button>
+  <button class="filter" onclick="filtrar('13pro',this)">13 Pro</button>
+  <button class="filter" onclick="filtrar('13promax',this)">13 Pro Max</button>
+  <button class="filter" onclick="filtrar('15',this)">15</button>
+  <button class="filter" onclick="filtrar('15pro',this)">15 Pro</button>
+  <button class="filter" onclick="filtrar('15promax',this)">15 Pro Max</button>
+  <button class="filter" onclick="filtrar('16promax',this)">16 Pro Max</button>
 </div>
 
 <div class="list">
 
-<div class="card producto 13pro">
-  <div class="card-left">
-    <h3>iPhone 13 Pro · 128GB Negro Grafito</h3>
-    <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋100%</div>
-      <div class="badge">30 días</div>
-      <div class="badge">✔</div>
+  <div class="card producto 13pro">
+    <div class="card-left">
+      <h3>iPhone 13 Pro</h3>
+      <small>128GB · Grafito</small>
+      <div class="badges">
+        <div class="badge">🔋 100%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 470</strong>
+      <span>$702.650</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
     </div>
   </div>
-  <div class="card-right">
-    <div class="price">USD 470<small>$707.350</small></div>
-    <div class="cuotas" onclick="abrirCuotas()">Ver cuotas</div>
-  </div>
-</div>
 
-<div class="card producto 13promax">
-  <div class="card-left">
-    <h3>iPhone 13 Pro Max · 128GB</h3>
-    <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋100%</div>
-      <div class="badge">30 días</div>
-      <div class="badge">✔</div>
+  <div class="card producto 13pro">
+    <div class="card-left">
+      <h3>iPhone 13 Pro</h3>
+      <small>128GB · Sierra Blue</small>
+      <div class="badges">
+        <div class="badge">🔋 100%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 470</strong>
+      <span>$702.650</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
     </div>
   </div>
-  <div class="card-right">
-    <div class="price">USD 515<small>$775.075</small></div>
-    <div class="cuotas" onclick="abrirCuotas()">Ver cuotas</div>
-  </div>
-</div>
 
-<div class="card producto 15">
-  <div class="card-left">
-    <h3>iPhone 15 · 128GB Negro</h3>
-    <p>Estado 91%</p>
-    <div class="badges">
-      <div class="badge">🔋91%</div>
-      <div class="badge">30 días</div>
-      <div class="badge">✔</div>
+  <div class="card producto 13promax">
+    <div class="card-left">
+      <h3>iPhone 13 Pro Max</h3>
+      <small>128GB · Grafito</small>
+      <div class="badges">
+        <div class="badge">🔋 100%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 515</strong>
+      <span>$769.925</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
     </div>
   </div>
-  <div class="card-right">
-    <div class="price">USD 530<small>$797.650</small></div>
-    <div class="cuotas" onclick="abrirCuotas()">Ver cuotas</div>
-  </div>
-</div>
 
-<div class="card producto 15promax">
-  <div class="card-left">
-    <h3>iPhone 15 Pro Max · 256GB</h3>
-    <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋100%</div>
-      <div class="badge">30 días</div>
-      <div class="badge">✔</div>
+  <div class="card producto 15">
+    <div class="card-left">
+      <h3>iPhone 15</h3>
+      <small>128GB · Negro</small>
+      <div class="badges">
+        <div class="badge">🔋 91%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 530</strong>
+      <span>$792.350</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
     </div>
   </div>
-  <div class="card-right">
-    <div class="price">USD 800<small>$1.204.000</small></div>
-    <div class="cuotas" onclick="abrirCuotas()">Ver cuotas</div>
-  </div>
-</div>
 
-<div class="card producto 16">
-  <div class="card-left">
-    <h3>iPhone 16 · Sellado Negro</h3>
-    <p>Estado 100%</p>
-    <div class="badges">
-      <div class="badge">🔋100%</div>
-      <div class="badge">Nuevo</div>
-      <div class="badge">✔</div>
+  <div class="card producto 15">
+    <div class="card-left">
+      <h3>iPhone 15</h3>
+      <small>128GB · Celeste</small>
+      <div class="badges">
+        <div class="badge">🔋 91%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 565</strong>
+      <span>$744.675</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
     </div>
   </div>
-  <div class="card-right">
-    <div class="price">USD 825<small>$1.241.625</small></div>
-    <div class="cuotas" onclick="abrirCuotas()">Ver cuotas</div>
-  </div>
-</div>
 
-<div class="card producto 16promax">
-  <div class="card-left">
-    <h3>iPhone 16 Pro Max · 256GB</h3>
-    <p>Estado 95%</p>
-    <div class="badges">
-      <div class="badge">🔋95%</div>
-      <div class="badge">30 días</div>
-      <div class="badge">✔</div>
+  <div class="card producto 15pro">
+    <div class="card-left">
+      <h3>iPhone 15 Pro</h3>
+      <small>128GB · Natural Titanium</small>
+      <div class="badges">
+        <div class="badge">🔋 100%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 680</strong>
+      <span>$1.016.600</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
     </div>
   </div>
-  <div class="card-right">
-    <div class="price">USD 990<small>$1.489.950</small></div>
-    <div class="cuotas" onclick="abrirCuotas()">Ver cuotas</div>
+
+  <div class="card producto 15pro">
+    <div class="card-left">
+      <h3>iPhone 15 Pro</h3>
+      <small>128GB · Negro Titanium</small>
+      <div class="badges">
+        <div class="badge">🔋 100%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 680</strong>
+      <span>$1.016.600</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
+    </div>
   </div>
-</div>
+
+  <div class="card producto 15promax">
+    <div class="card-left">
+      <h3>iPhone 15 Pro Max</h3>
+      <small>256GB · Negro Titanium</small>
+      <div class="badges">
+        <div class="badge">🔋 100%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 800</strong>
+      <span>$1.196.000</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
+    </div>
+  </div>
+
+  <div class="card producto 15promax">
+    <div class="card-left">
+      <h3>iPhone 15 Pro Max</h3>
+      <small>256GB · Azul Titanium</small>
+      <div class="badges">
+        <div class="badge">🔋 100%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 800</strong>
+      <span>$1.196.000</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
+    </div>
+  </div>
+
+  <div class="card producto Sellados">
+    <div class="card-left">
+      <h3>iPhone 16</h3>
+      <small>Negro</small>
+      <div class="badges">
+        <div class="badge">🔋 100%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 825</strong>
+      <span>$1.233.375</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
+    </div>
+  </div>
+
+  <div class="card producto 16promax">
+    <div class="card-left">
+      <h3>iPhone 16 Pro Max</h3>
+      <small>256GB · Negro Titanium</small>
+      <div class="badges">
+        <div class="badge">🔋 95%</div>
+        <div class="badge">🛡️ 30 días</div>
+        <div class="badge">✔ Verificado</div>
+      </div>
+    </div>
+    <div class="card-right">
+      <strong>USD 990</strong>
+      <span>$1.480.050</span>
+      <div class="cuotas" onclick="abrirCuotas()">Ver cuotas ›</div>
+    </div>
+  </div>
 
 </div>
 
-<div class="whatsapp">
-  <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
-</div>
 
-<!-- MODAL -->
+<!-- BOTÓN WHATSAPP -->
+<a href="https://wa.me/549XXXXXXXXXX" class="whatsapp-float" target="_blank">
+  <i class="fa-brands fa-whatsapp"></i> Consultar
+</a>
+
+<!-- MODAL CUOTAS -->
 <div class="modal" id="modalCuotas">
   <div class="modal-box">
     <h3>Planes de pago</h3>
-    <p>3 cuotas sin interés<br>6 cuotas con recargo</p>
+    <p>3 cuotas sin interés<br>6 y 12 con recargo</p>
     <button onclick="cerrarCuotas()">Cerrar</button>
   </div>
 </div>
 
 <script>
-function filtrar(clase){
-  document.querySelectorAll('.producto').forEach(p=>{
-    p.style.display = p.classList.contains(clase) ? 'flex' : 'none';
-  });
+function abrirMenu(){
+  document.getElementById("menu").style.display="block";
 }
 
-function mostrarTodos(){
+document.getElementById("menu").addEventListener("click",function(e){
+  if(e.target.id==="menu"){
+    this.style.display="none";
+  }
+});
+
+function filtrar(clase,btn){
+  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
   document.querySelectorAll('.producto').forEach(p=>{
-    p.style.display = 'flex';
+    p.style.display =
+      (clase==='all' || p.classList.contains(clase)) ? 'flex' : 'none';
   });
 }
 
 function abrirCuotas(){
-  document.getElementById('modalCuotas').style.display = 'flex';
+  document.getElementById('modalCuotas').style.display='flex';
 }
 
 function cerrarCuotas(){
-  document.getElementById('modalCuotas').style.display = 'none';
+  document.getElementById('modalCuotas').style.display='none';
 }
 </script>
+
+
+</body>
+</html>
 
 </body>
 </html>
