@@ -70,11 +70,18 @@ header img{width:180px}
   border-radius:18px;
   padding:14px 16px;
   margin-bottom:12px;
+
   display:flex;
-  justify-content:space-between;
-  align-items:center; /* 🔥 ESTO FALTABA */
+  align-items:center;
+  gap:12px;              /* 🔥 en vez de space-between */
   color:#fff;
 }
+ 
+.card-left{
+  flex:1;                /* 🔒 ocupa el espacio disponible */
+  min-width:0;           /* 🔥 evita desbordes */
+}
+
 
 
 /* BADGES */
@@ -146,8 +153,9 @@ header img{width:180px}
   display:flex;
   flex-direction:column;
   align-items:flex-end;
-  min-width:120px; /* 🔒 evita que se escape */
+  flex-shrink:0;         /* 🔒 no se achica */
 }
+
 
 
 .precio-usd{
@@ -162,14 +170,25 @@ header img{width:180px}
 
 /* PRECIOS */
 .card-right{text-align:right}
-..cuotas{
+.cuotas{
   margin-top:6px;
   padding:6px 14px;
   border-radius:20px;
   font-size:13px;
   background:#1c1c1e;
-  white-space:nowrap;
+  color:#fff;
   cursor:pointer;
+
+  width:auto;            /* 🔥 */
+  align-self:flex-end;   /* 🔥 */
+  white-space:nowrap;
+}
+
+}
+
+.price-ars,
+.price-usd{
+  white-space:nowrap;
 }
 
 
